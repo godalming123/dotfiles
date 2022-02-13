@@ -1,0 +1,15 @@
+colors:
+    primary:
+        background: "#2f343f"
+
+cursor:
+    style: Beam
+    unfocused_hollow: false
+
+live_config_reload: true
+
+window:
+    opacity: 0.97
+    dimensions:
+        columns: 212
+        lines: 48
