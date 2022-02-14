@@ -51,7 +51,6 @@ function fish_greeting
     clear
     /bin/ufetch-endevour.sh
     tput sgr0 # reset the font weght + color
-    echo "" # creat a new line
 end
 
 # ============================
