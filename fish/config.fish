@@ -73,6 +73,18 @@ function get_branch
     end
 end
 
+# === computer hostname ===
+function Hostname
+    set hostname_ (hostname)
+    echo -n "$reset from $magenta$hostname_"
+end
+
+# === computer user ===
+function usr
+    set user (whoami)
+    echo -n "$reset as $yellowfish$user"
+end
+
 # === prompt working directory ===
 function workingDir
     echo -n "in $blue"
