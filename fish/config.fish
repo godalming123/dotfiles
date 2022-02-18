@@ -35,7 +35,7 @@ if status is-interactive
     # === UPDATES ===
     # ===============
 
-    paru -Qu | wc -l > ~/.updates.txt &
+    paru -Qu | wc -l > ~/.config/updates.txt &
 
     # ===================
     # === Add aliases ===
@@ -69,7 +69,7 @@ end
 
 # === updates ===
 function updates
-    set updates (cat ~/.updates.txt)
+    set updates (cat ~/.config/updates.txt)
     if test "$updates" != "0"; or test "$updates" != ""
         echo -n "$reset with $red$updates$reset updates"
     end
