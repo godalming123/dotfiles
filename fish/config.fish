@@ -13,33 +13,43 @@ end
 # =====================
 
 # === STYLES ===
-set reset (tput sgr0)
-set bold (tput bold)
+set reset (tput sgr0) &
+set bold (tput bold) &
 
 # === FONT COLORS ===
-set black (tput setaf 0)
-set red (tput setaf 1)
-set green (tput setaf 2)
-set yellow (tput setaf 3)
-set blue (tput setaf 4)
-set magenta (tput setaf 5)
-set cyan (tput setaf 6)
-set white (tput setaf 7)
+set black (tput setaf 0) &
+set red (tput setaf 1) &
+set green (tput setaf 2) &
+set yellow (tput setaf 3) &
+set blue (tput setaf 4) &
+set magenta (tput setaf 5) &
+set cyan (tput setaf 6) &
+set white (tput setaf 7) &
 
-# ===================
-# === Add aliases ===
-# ===================
+# ====================
+# === INTERACTIVE  ===
+# ====================
 
 if status is-interactive
+    # ===============
+    # === UPDATES ===
+    # ===============
+
+    paru -Qu | wc -l > ~/.updates.txt &
+
+    # ===================
+    # === Add aliases ===
+    # ===================
+
     # === ls aliases ===
-    alias ls='ls --color=auto'
-    alias ll='ls -lav --ignore=..' # show a long listing of all files/folders except ".."
-    alias l='ls -lav -ignore=.?*'  # show a long listing but no hidden files except "."
+    alias ls='ls --color=auto' &
+    alias ll='ls -lav --ignore=..' & # show a long listing of all files/folders except ".."
+    alias l='ls -lav -ignore=.?*' &  # show a long listing but no hidden files except "."
 
     # === other aliases ===
-    alias screens='kanshi'
-    alias config='cd ~/Documents/coding\ repos/dotfiles/; micro fish/config.fish sys-info/ufetch-endevour.sh wayfire/wayfire.ini wayfire/wf-shell.ini alacritty/alacritty.yml wofi/styles.css kanshi/config'
-    alias pacman='sudo pacman'
+    alias screens='kanshi' &
+    alias config='cd ~/Documents/coding\ repos/dotfiles/; micro fish/config.fish sys-info/ufetch-endevour.sh wayfire/wayfire.ini wayfire/wf-shell.ini alacritty/alacritty.yml wofi/styles.css kanshi/config' &
+    alias pacman='sudo pacman' &
     alias wayfire="dbus-run-session wayfire"
 end
 
@@ -56,6 +66,14 @@ end
 # ============================
 # === PROMPT CONFIGURATION ===
 # ============================
+
+# === updates ===
+function updates
+    set updates (cat ~/.updates.txt)
+    if test "$updates" != "0"; or test "$updates" != ""
+        echo -n "$reset with $red$updates$reset updates"
+    end
+end
 
 # === git branches ===
 function get_branch
@@ -110,6 +128,7 @@ function fish_prompt
 
     workingDir
     get_branch
+    updates
     indicator "$success"
         
 end
