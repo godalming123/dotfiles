@@ -46,29 +46,21 @@ chsh -s /bin/fish $USER
 mkdir ~/.config/
 
 # add config files
-sudo mkdir     /usr/share/backgrounds/
-sudo mkdir     /usr/share/backgrounds/bspwm/
-sudo curl -o   /usr/share/backgrounds/bspwm/windows.jpg           https://godalming123.github.io/blog/files/linux-setup/configs/wallpapers/windows.jpg
-sudo curl -o   /usr/share/backgrounds/bspwm/detailed-mountain.jpg https://godalming123.github.io/blog/files/linux-setup/configs/wallpapers/detailed-mountain.jpg
-sudo curl -o   /usr/share/backgrounds/bspwm/simple-mountain.jpg   https://godalming123.github.io/blog/files/linux-setup/configs/wallpapers/simple-mountain.jpg
+ln -s      ~/Documents/coding\ repos/dotfiles/wallpapers/                 ~/.config/
 
-sudo mkdir     /usr/share/backgrounds/icons/
-sudo curl -o   /usr/share/backgrounds/icons/logo.png              https://godalming123.github.io/blog/files/linux-setup/configs/icon.png
+ln -s      ~/Documents/coding\ repos/dotfiles/fish/                       ~/.config/
 
-curl -o        ~/.config/fish/config.fish          https://godalming123.github.io/blog/files/linux-setup/configs/config.fish
+ln -s      ~/Documents/coding\ repos/dotfiles/alacritty/                  ~/.config/
 
-sudo curl -o   /bin/ufetch-arch.sh                 https://godalming123.github.io/blog/files/linux-setup/configs/ufetch-arch.sh
-sudo chmod a+x /bin/ufetch-arch.sh
+ln -s      ~/Documents/coding\ repos/dotfiles/wayfire/wayfire.ini         ~/.config/
+ln -s      ~/Documents/coding\ repos/dotfiles/wayfire/wf-shell.ini        ~/.config/
 
-mkdir          ~/.config/alacritty/
-curl -o        ~/.config/alacritty/alacritty.yml   https://godalming123.github.io/blog/files/linux-setup/configs/alacritty.yml
+sudo ln -s ~/Documents/coding\ repos/dotfiles/micro/                      ~/.config/
 
-mkdir          ~/.config/bspwm/
-curl -o        ~/.config/bspwm/bspwmrc             https://godalming123.github.io/blog/files/linux-setup/configs/bspwmrc
-chmod a+x      ~/.config/bspwm/bspwmrc
+sudo ln -s ~/Documents/coding\ repos/dotfiles/fonts/iconsFont.ttf         /usr/share/fonts/TTF/
 
-sudo mkdir     /usr/share/fonts/TTF/
-sudo curl -o   /usr/share/fonts/TTF/Material-Design-Iconic-Font.ttf https://godalming123.github.io/blog/files/linux-setup/configs/Material-Design-Iconic-Font.ttf
+sudo ln -s ~/Documents/coding\ repos/dotfiles/sys-info/ufetch-endevour.sh /bin/ufetch-endevour.sh
+chmod a+x  ~/Documents/coding\ repos/dotfiles/sys-info/ufetch-endevour.sh
 
 echo "...FINISHED DESKTOP SETUP"
 echo ""
