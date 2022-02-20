@@ -48,6 +48,8 @@ mkdir ~/.config/
 # add config files
 ln -s      ~/Documents/coding\ repos/dotfiles/wallpapers/                 ~/.config/
 
+ln -s      ~/Documents/coding\ repos/dotfiles/mako/                      ~/.config/
+
 ln -s      ~/Documents/coding\ repos/dotfiles/fish/                       ~/.config/
 
 ln -s      ~/Documents/coding\ repos/dotfiles/alacritty/                  ~/.config/
