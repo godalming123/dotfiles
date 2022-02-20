@@ -65,6 +65,3 @@ chmod a+x  ~/Documents/coding\ repos/dotfiles/sys-info/ufetch-endevour.sh
 echo "...FINISHED DESKTOP SETUP"
 echo ""
 echo "========== ...FINISHED DESKTOP INSTALLATION AND SETUP =========="
-
-# lightdm setup
-sudo systemctl enable lightdm --now
