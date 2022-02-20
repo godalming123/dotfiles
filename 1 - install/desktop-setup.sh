@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/usr/bin/sh
 
 echo "=======STARTING DESKTOP INSTALLATION AND SETUP V1.8.0 ... ======"
 echo ""

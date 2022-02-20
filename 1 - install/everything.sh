@@ -20,6 +20,8 @@ function exec_ {
 
 exec_ ./software/software-sources.sh
 
+exec_ ./git-config.sh
+
 exec_ ./software/software-basic.sh
 
 exec_ ./desktop-setup.sh
