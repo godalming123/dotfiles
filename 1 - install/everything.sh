@@ -9,7 +9,7 @@ echo "===================== ...FINISHED UPGRADES ====================="
 echo "================================================================"
 echo ""
 echo "================================================================"
-echo "==== STARTING INSTALLATION AND CONFIIGURATION OF SYSTEM... ====="
+echo "==== STARTING INSTALLATION AND CONFIIGURATION OF SYSTEM V1.0... ====="
 echo "================================================================"
 
 function exec_ {

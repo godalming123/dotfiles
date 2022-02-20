@@ -1,6 +1,6 @@
 #!/usr/bin/sh
 
-echo "========== STARTING SOFTWARE SOURCES CONFIGURATION... =========="
+echo "========== STARTING SOFTWARE SOURCES CONFIGURATION V1.0... =========="
 echo ""
 echo "INSTALLING FLATPAK SOFTWARE SOURCE..."
 #flatpack
