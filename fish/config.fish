@@ -35,7 +35,7 @@ if status is-interactive
     # === UPDATES ===
     # ===============
 
-    paru -Qu | wc -l > ~/.config/updates.txt &
+    paru -Qu > ~/.config/updates.txt &
 
     # ===================
     # === Add aliases ===
@@ -46,6 +46,10 @@ if status is-interactive
     alias ll='ls -lav --ignore=..' & # show a long listing of all files/folders except ".."
     alias l='ls -lav -ignore=.?*' &  # show a long listing but no hidden files except "."
 
+    # === app aliases ===
+    alias teams='flatpak run com.microsoft.Teams &'
+    alias vscodium='flatpak run com.vscodium.codium &'
+    
     # === other aliases ===
     alias screens='kanshi' &
     alias config='cd ~/Documents/coding\ repos/dotfiles/; micro fish/config.fish sys-info/ufetch-endevour.sh wayfire/wayfire.ini wayfire/wf-shell.ini alacritty/alacritty.yml wofi/styles.css kanshi/config' &
@@ -69,7 +73,7 @@ end
 
 # === updates ===
 function updates
-    set updates (cat ~/.config/updates.txt)
+    set updates (cat ~/.config/updates.txt | wc -l)
     if test "$updates" != "0"; or test "$updates" != ""
         echo -n "$reset with $red$updates$reset updates"
     end
