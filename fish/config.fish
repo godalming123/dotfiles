@@ -55,6 +55,9 @@ if status is-interactive
     alias gadd='git add' &
     alias gclone='git clone' &
     alias gommit='git commit' &
+    alias gush='git push' &
+    alias geckout='git checkout' &
+    alias gomote='git remote' &
     
     # === other aliases ===
     alias screens='kanshi' &
