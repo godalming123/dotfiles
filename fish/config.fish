@@ -59,6 +59,7 @@ if status is-interactive
     alias geckout='git checkout' &
     alias gomote='git remote' &
     alias giff='git diff' &
+    alias gog='git log' &
     
     # === other aliases ===
     alias screens='kanshi' &
@@ -66,6 +67,7 @@ if status is-interactive
     alias pacman='sudo pacman' &
     alias wayfire='dbus-run-session wayfire' &
     alias concd='cd ~/Documents/coding\ repos/dotfiles/'
+    #alias fish_prompt='fish ' #this is supposed to reload fish with staring the greeting
 end
 
 # =====================
