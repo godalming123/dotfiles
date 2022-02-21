@@ -63,11 +63,11 @@ if status is-interactive
     
     # === other aliases ===
     alias screens='kanshi' &
-    alias config='cd ~/Documents/coding\ repos/dotfiles/; micro fish/config.fish sys-info/ufetch-endevour.sh wayfire/wayfire.ini wayfire/wf-shell.ini alacritty/alacritty.yml wofi/styles.css mako/config' &
+    alias config='cd ~/Documents/coding\ repos/dotfiles/; micro fish/config.fish sys-info/ufetch-endevour.sh wayfire/wayfire.ini wayfire/wf-shell.ini alacritty/alacritty.yml wofi/styles.css wofi/wifi wofi/wofi-wifi.sh mako/config' &
     alias pacman='sudo pacman' &
     alias wayfire='dbus-run-session wayfire' &
     alias concd='cd ~/Documents/coding\ repos/dotfiles/'
-    #alias fish_prompt='fish ' #this is supposed to reload fish with staring the greeting
+    # alias fish_prompt='fish ' #this is supposed to reload fish with staring the greeting
 end
 
 # =====================
