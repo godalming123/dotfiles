@@ -52,7 +52,7 @@ if status is-interactive
     
     # === other aliases ===
     alias screens='kanshi' &
-    alias config='cd ~/Documents/coding\ repos/dotfiles/; micro fish/config.fish sys-info/ufetch-endevour.sh wayfire/wayfire.ini wayfire/wf-shell.ini alacritty/alacritty.yml wofi/styles.css kanshi/config' &
+    alias config='cd ~/Documents/coding\ repos/dotfiles/; micro fish/config.fish sys-info/ufetch-endevour.sh wayfire/wayfire.ini wayfire/wf-shell.ini alacritty/alacritty.yml wofi/styles.css mako/config' &
     alias pacman='sudo pacman' &
     alias wayfire='dbus-run-session wayfire' &
     alias concd='cd ~/Documents/coding\ repos/dotfiles/'
@@ -80,20 +80,34 @@ function updates
     end
 end
 
-# === git branches ===
-function get_branch
-    # /dev/null prevents nonsensical errors when you are on directories not tracked by git
-    if test (git status --untracked-files=no --porcelian 2> /dev/null | wc -l) -eq 0
-        set indicator "no changes"
-    else
-        set indicator "changes"
-    end
-
+# === git ===
+function git_info
     set branch_name (git rev-parse --abbrev-ref HEAD 2> /dev/null)
-
+    
     if test "$branch_name" != ""
-        echo -n "$reset on$cyan $branch_name$reset with$cyan $indicator" # if we are on a git folder
+        echo -n "$reset on$cyan $branch_name" # if we are on a git folder
+        git_changes
     end
+end
+
+function git_branch
+    
+end
+
+function git_changes
+    # /dev/null prevents nonsensical errors when you are on directories not tracked by git
+    set changesLNs (git status --untracked-files=no 2> /dev/null | wc -l)
+    set changes (expr $changesLNs - 9)
+    
+    if test $changes -eq 0
+        set changesText "no changes"
+    else if test $changes -gt 1
+        set changesText "$changes changes"
+    else
+        set changesText "1 change" 
+    end
+    
+    echo -n "$reset with$cyan $changesText"
 end
 
 # === computer hostname ===
@@ -132,7 +146,7 @@ function fish_prompt
     end
 
     workingDir
-    get_branch
+    git_info
     updates
     indicator "$success"
         
