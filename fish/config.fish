@@ -58,6 +58,7 @@ if status is-interactive
     alias gush='git push' &
     alias geckout='git checkout' &
     alias gomote='git remote' &
+    alias giff='git diff' &
     
     # === other aliases ===
     alias screens='kanshi' &
