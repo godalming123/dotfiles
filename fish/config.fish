@@ -49,6 +49,12 @@ if status is-interactive
     # === app aliases ===
     alias teams='flatpak run com.microsoft.Teams &'
     alias vscodium='flatpak run com.vscodium.codium &'
+
+    # === git aliases ===
+    alias gstat='git status' &
+    alias gadd='git add' &
+    alias gclone='git clone' &
+    alias gommit='git commit' &
     
     # === other aliases ===
     alias screens='kanshi' &
