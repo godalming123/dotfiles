@@ -1,4 +1,7 @@
 {
     "Alt-/": "lua:comment.comment",
-    "CtrlUnderscore": "lua:comment.comment"
+    "CtrlUnderscore": "lua:comment.comment",
+    "Ctrl-p": "lua:filemanager.toggle_tree",
+    "Ctrl-e": "command:vsplit,command:term,lua:filemanager.toggle_tree",
+    "Alt-e": "CommandMode"
 }
