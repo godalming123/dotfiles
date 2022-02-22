@@ -2,7 +2,7 @@
 # === UPDATES ===
 # ===============
 function notify_updates
-    paru -S # synchronise databases
+    paru -Sy # synchronise databases
     paru -Qu >~/.config/updates.txt # push updates into textfile
     set updates (cat ~/.config/updates.txt | wc -l) # set a variable for the updates
     if test $updates -ne 0
@@ -68,7 +68,7 @@ if status is-interactive
 
     # = other aliases =
     alias screens='kanshi' &
-    alias config='cd ~/Documents/coding\ repos/dotfiles/; micro fish/config.fish sys-info/ufetch-endevour.sh wayfire/wayfire.ini wayfire/wf-shell.ini alacritty/alacritty.yml wofi/styles.css wofi/wifi wofi/wofi-wifi.sh mako/config' &
+    alias config='cd ~/Documents/coding\ repos/dotfiles/; micro fish/config.fish sys-info/ufetch-endevour.sh wayfire/wayfire.ini wayfire/wf-shell.ini alacritty/alacritty.yml wofi/styles.css wofi/wifi wofi/wofi-wifi.sh mako/config micro/bindings.json micro/settings.json' &
     alias pacman='sudo pacman' &
     alias wayfire='dbus-run-session wayfire' &
     alias concd='cd ~/Documents/coding\ repos/dotfiles/'
