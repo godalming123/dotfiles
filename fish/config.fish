@@ -2,7 +2,7 @@
 # === UPDATES ===
 # ===============
 function notify_updates
-    paru -S # download databases
+    paru -S # synchronise databases
     paru -Qu >~/.config/updates.txt # push updates into textfile
     set updates (cat ~/.config/updates.txt | wc -l) # set a variable for the updates
     if test $updates -ne 0
