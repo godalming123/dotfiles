@@ -6,7 +6,7 @@ host="$(cat /etc/hostname)"
 os="Endevour OS"
 kernal="$(uname -sr)"
 uptime="$(uptime -p | sed 's/up //')"
-packadges="$(pacman -Q | wc -l)"
+packadges="$(paru -Q | wc -l)"
 shell="$(basename "${SHELL}")"
 
 # FONT SETTINGS

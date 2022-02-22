@@ -4,4 +4,5 @@
     "Ctrl-e": "CommandMode",
     "Ctrl-f": "lua:filemanager.toggle_tree,NextSplit,Quit",
     "Ctrl-p": "lua:filemanager.toggle_tree",
+    "CtrlUnderscore": "lua:comment.comment"
 }
