@@ -61,8 +61,8 @@ sudo ln -s ~/Documents/coding\ repos/dotfiles/micro/                      ~/.con
 
 sudo ln -s ~/Documents/coding\ repos/dotfiles/fonts/iconsFont.ttf         /usr/share/fonts/TTF/
 
-sudo ln -s ~/Documents/coding\ repos/dotfiles/sys-info/ufetch-endevour.sh /bin/ufetch-endevour.sh
-chmod a+x  ~/Documents/coding\ repos/dotfiles/sys-info/ufetch-endevour.sh
+sudo ln -s ~/Documents/coding\ repos/dotfiles/scripts/ufetch-endevour.sh /bin/
+chmod a+x  ~/Documents/coding\ repos/dotfiles/scripts/ufetch-endevour.sh
 
 echo "...FINISHED DESKTOP SETUP"
 echo ""
