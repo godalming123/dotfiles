@@ -57,6 +57,8 @@ ln -s      ~/Documents/coding\ repos/dotfiles/alacritty/                  ~/.con
 ln -s      ~/Documents/coding\ repos/dotfiles/wayfire/wayfire.ini         ~/.config/
 ln -s      ~/Documents/coding\ repos/dotfiles/wayfire/wf-shell.ini        ~/.config/
 
+ln -s      ~/Documents/coding\ repos/dotfiles/icons                       ~/.config/
+
 sudo ln -s ~/Documents/coding\ repos/dotfiles/micro/                      ~/.config/
 
 sudo ln -s ~/Documents/coding\ repos/dotfiles/fonts/iconsFont.ttf         /usr/share/fonts/TTF/

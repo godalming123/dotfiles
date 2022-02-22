@@ -1,12 +1,12 @@
 # ===============
 # === UPDATES ===
 # ===============
-function notify_updates
+function notify_updates # this functiond oes not work as sudo is requered to run it so it cannot run from tty
     paru -Sy # synchronise databases
     paru -Qu >~/.config/updates.txt # push updates into textfile
     set updates (cat ~/.config/updates.txt | wc -l) # set a variable for the updates
     if test $updates -ne 0
-        notify-send --urgency=low --icon="" "You have $updates updates" # notify user of the updates
+        notify-send --urgency=low --icon=~/.config/icons/download-icons8.png "You have $updates updates" # notify user of the updates
     end
 end
 
