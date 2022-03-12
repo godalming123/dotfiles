@@ -1,15 +1,3 @@
-# ===============
-# === UPDATES ===
-# ===============
-function notify_updates # this functiond oes not work as sudo is requered to run it so it cannot run from tty
-    paru -Sy # synchronise databases
-    paru -Qu >~/.config/updates.txt # push updates into textfile
-    set updates (cat ~/.config/updates.txt | wc -l) # set a variable for the updates
-    if test $updates -ne 0
-        notify-send --urgency=low --icon=~/.config/icons/download-icons8.png "You have $updates updates" # notify user of the updates
-    end
-end
-
 # ==================
 # === HANDLE TTY ===
 # ==================
@@ -17,8 +5,7 @@ end
 set ttyVar (tty)
 
 if test $ttyVar = /dev/tty1 # if we are running in tty
-    dbus-run-session wayfire & # run wayfire
-    watch -n (expr 60 \* 60 \* 24) notify_updates # handle notifying updates every day
+    dbus-run-session wayfire # run wayfire
 end
 
 # =====================
@@ -71,7 +58,7 @@ if status is-interactive
     alias config='cd ~/Documents/coding\ repos/dotfiles/; micro fish/config.fish sys-info/ufetch-endevour.sh wayfire/wayfire.ini wayfire/wf-shell.ini alacritty/alacritty.yml wofi/styles.css wofi/wifi wofi/wofi-wifi.sh mako/config micro/bindings.json micro/settings.json' &
     alias pacman='sudo pacman' &
     alias wayfire='dbus-run-session wayfire' &
-    alias concd='cd ~/Documents/coding\ repos/dotfiles/' &
+    alias concd='cd ~/Documents/coding\ repos/dotfiles/; cd $1' &
     # alias fish_prompt='fish ' #this is supposed to reload fish with staring the greeting
     alias q='exit'
 end
@@ -92,7 +79,7 @@ end
 
 # === updates ===
 function updates
-    set updates (cat ~/.config/updates.txt | wc -l)
+    set updates (cat ~/.config/eww/scripts/updates.txt)
     if test "$updates" != 0; or test "$updates" != ""
         echo -n "$reset with $red$updates$reset updates"
     end
