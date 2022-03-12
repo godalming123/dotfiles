@@ -1,0 +1,29 @@
+; === app list ===
+(defpoll search_listen :interval "1s" "cat ./search-items.txt")
+
+; === charge ===
+(defpoll battery :interval "15s" "scripts/battery.sh")
+
+; === volume ===
+(defpoll volume :interval "1s" "scripts/getvol.sh")
+
+; === time vars
+(defpoll time :interval "60s" "date '+%d/%m/%y %H:%M'")
+
+(defpoll HOUR :interval "600s" "date +'%I'")
+(defpoll MIN :interval "600s" "date +'%M'")
+(defpoll MER :interval "600s" "date +'%p'")
+(defpoll DAY :interval "600s" "date +'%A'")
+
+; === brightness ===
+(defpoll brightness :interval "1s" "scripts/brightness.sh")
+
+; === wifi ===
+(defpoll wifi-name :interval "1m" "./scripts/wifi.sh --ESSID")
+
+; === disk ===
+(defpoll disk-usage :interval "5m" "echo $(df | grep / | awk '{ print $5 }' | sed 's/[^0-9]//g' )")
+
+; === updates ===
+(defpoll updates-runner :interval "1h" "./scripts/updates.sh")
+(defpoll updates :interval "5m" "cat ./scripts/updates.txt")

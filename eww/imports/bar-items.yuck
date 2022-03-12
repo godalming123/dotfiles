@@ -1,0 +1,67 @@
+; === center ===
+(defwidget centerStuff []
+    ""
+)
+
+; === left ===
+(defwidget leftStuff []
+  (button :tooltip "Menu - Show favouroute apps - super" :halign "start" :class "menu-button btn"
+          :onclick "eww close updates sys-info notifucations wifi calendar; eww open --toggle menu"
+    (image :path "./icons/dark/feather.png" :image-height 18)
+  )
+)
+
+; === right ===
+(defwidget rightStuff []
+  (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end"
+    (box :onclick "eww close updates menu notifucations calendar wifi; eww open --toggle sys-info" :orientation "h" :space-evenly false
+        ; volume
+        (imic :tooltip "Volume: ${volume}%"
+              :icon "./icons/dark/audio.png"
+              :value volume
+              :onchange "amixer -D pulse set Master {}%")
+        ; brightness
+        (imic :tooltip "Brightness: ${brightness}%"
+              :icon "./icons/dark/brightness.png"
+              :value brightness
+              :onchange "notify-send 'brightness is {}' -t 500")
+        ; ram
+        (imic :tooltip "RAM: ${EWW_RAM.used_mem_perc}%"
+              :icon "./icons/dark/ram.png"
+              :value {EWW_RAM.used_mem_perc}
+              :onchange "")
+        ; cpu
+        (imic :tooltip "CPU: ${EWW_CPU.avg}%"
+              :icon "./icons/dark/cpu.png"
+              :value {EWW_CPU.avg}
+              :onchange "")
+        ; disk
+        (imic :tooltip "Disk: ${(EWW_DISK["/"].used / EWW_DISK["/"].total) * 100}%"
+              :icon "./icons/dark/disk.png"
+              :value {(EWW_DISK["/"].used / EWW_DISK["/"].total) * 100}
+              :onchange "")
+        ; battery
+        (imic :tooltip "Battery: ${battery}%"
+              :icon "./icons/dark/battery.png"
+              :value battery
+              :onchange "")
+    )
+    ; wifi
+    (button :tooltip "Connected to ${wifi-name}" :class "btn" :onclick "eww close updates sys-info menu notifucations calendar; eww open --toggle wifi"
+        (image :path "./icons/dark/wifi.png" :image-height 18)
+    )
+    ; updates
+    ;${updates == 0 ? "" : ""}
+    (button :tooltip "You have ${updates} updates" :class "btn" :onclick "eww close wifi sys-info menu notifucations calendar; eww open --toggle updates"
+      (box :orientation "h" :space-evenly false
+        (image :path "./icons/dark/downloads.png" :image-height 14)
+        updates
+      )
+    )
+
+    ; calendar
+    (button :tooltip "The date is ${time}" :class "btn" :onclick "eww close updates sys-info menu wifi notifucations; eww open --toggle calendar" time)
+    ; notifucations menu
+    (button :tooltip "shows notifucations"  :class "btn notifucations" :onclick "eww close updates sys-info menu wifi calendar; eww open --toggle notifucations" "notifucations")
+  )
+)
