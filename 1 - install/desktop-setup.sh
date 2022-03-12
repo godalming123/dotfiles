@@ -8,7 +8,7 @@ echo "STARTING DESKTOP INSTALLATION..."
 sudo pacman -S  pipewire pipewire-alsa pipewire-jack pipewire-pulse arc-gtk-theme xorg-xwayland fish wofi
 
 # paru software
-paru -S wayfire
+paru -S wayfire eww-wayland-git
 
 echo "...FINISHED DESKTOP INSTALLATION"
 echo ""
@@ -46,7 +46,7 @@ chsh -s /bin/fish $USER
 mkdir ~/.config/
 
 # add config files
-ln -s      ~/Documents/coding\ repos/dotfiles/wallpapers/                 ~/.config/
+ln -s      ~/Documents/coding\ repos/dotfiles/eww/                 ~/.config/
 
 ln -s      ~/Documents/coding\ repos/dotfiles/mako/                      ~/.config/
 
@@ -57,11 +57,7 @@ ln -s      ~/Documents/coding\ repos/dotfiles/alacritty/                  ~/.con
 ln -s      ~/Documents/coding\ repos/dotfiles/wayfire/wayfire.ini         ~/.config/
 ln -s      ~/Documents/coding\ repos/dotfiles/wayfire/wf-shell.ini        ~/.config/
 
-ln -s      ~/Documents/coding\ repos/dotfiles/icons                       ~/.config/
-
 sudo ln -s ~/Documents/coding\ repos/dotfiles/micro/                      ~/.config/
-
-sudo ln -s ~/Documents/coding\ repos/dotfiles/fonts/iconsFont.ttf         /usr/share/fonts/TTF/
 
 sudo ln -s ~/Documents/coding\ repos/dotfiles/scripts/ufetch-endevour.sh /bin/
 chmod a+x  ~/Documents/coding\ repos/dotfiles/scripts/ufetch-endevour.sh
