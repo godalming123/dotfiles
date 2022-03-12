@@ -21,7 +21,7 @@
   )
 )
 
-; === define background information ===
+; === define background information windows ===
 
 (defwindow time
   :monitor 0
@@ -72,6 +72,7 @@
   :stacking "overlay"
 (cal))
 
+; === define updates window ===
 
 (defwindow updates
   :monitor 0
@@ -83,6 +84,8 @@
   :stacking "overlay"
 (updates-menu))
 
+; === define notifucations window ===
+
 (defwindow notifucations
   :monitor 0
   :geometry (geometry :width "260px"
@@ -92,6 +95,8 @@
                       :x "10px")
   :stacking "overlay"
 (notifucations))
+
+; === define wifi window ===
 
 (defwindow wifi
   :monitor 0
@@ -103,6 +108,7 @@
   :stacking "overlay"
 (wifi))
 
+; === window for wallpaper ===
 
 (defwindow background
   :monitor 0
@@ -111,6 +117,8 @@
                       :anchor "center")
   :stacking "bg"
 (box :class "background-image" :valign "fill" :halign "fill"))
+
+; === window for system info ===
 
 (defwindow sys-info
   :monitor 0

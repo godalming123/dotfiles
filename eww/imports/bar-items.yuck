@@ -41,8 +41,8 @@
               :value {(EWW_DISK["/"].used / EWW_DISK["/"].total) * 100}
               :onchange "")
         ; battery
-        (imic :tooltip "Battery: ${battery}%"
-              :icon "./icons/dark/battery.png"
+        (imic :tooltip "${battery}% battery ${battery-status == "Charging" ? "and charging" : ""}"
+              :icon "./icons/dark/battery${battery-status == "Charging" ? "-charging" : ""}.png"
               :value battery
               :onchange "")
     )
