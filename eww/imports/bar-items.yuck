@@ -24,7 +24,7 @@
         (imic :tooltip "Brightness: ${brightness}%"
               :icon "./icons/dark/brightness.png"
               :value brightness
-              :onchange "notify-send 'brightness is {}' -t 500")
+              :onchange "light -S {}")
         ; ram
         (imic :tooltip "RAM: ${EWW_RAM.used_mem_perc}%"
               :icon "./icons/dark/ram.png"
@@ -47,7 +47,7 @@
               :onchange "")
     )
     ; wifi
-    (button :tooltip "Connected to ${wifi-name}" :class "btn" :onclick "eww close updates sys-info menu notifucations calendar; eww open --toggle wifi"
+    (button :tooltip "${wifi-name == "" ? "Not connected" : "Connected to ${wifi-name} "}" :class "btn" :onclick "eww close updates sys-info menu notifucations calendar; eww open --toggle wifi"
         (image :path "./icons/dark/wifi.png" :image-height 18)
     )
     ; updates

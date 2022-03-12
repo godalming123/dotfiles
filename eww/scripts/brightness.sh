@@ -1,3 +1,3 @@
-#!/bin/fish
-set light $(light -G)
-echo $(math $light \* 10)
+#!/bin/sh
+light=$(light -G)
+echo $light

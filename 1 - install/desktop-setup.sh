@@ -5,10 +5,13 @@ echo ""
 echo "STARTING DESKTOP INSTALLATION..."
 
 # pacman software
-sudo pacman -S  pipewire pipewire-alsa pipewire-jack pipewire-pulse arc-gtk-theme xorg-xwayland fish wofi
+sudo pacman -S  pipewire pipewire-alsa pipewire-jack pipewire-pulse arc-gtk-theme xorg-xwayland fish wofi light
 
 # paru software
 paru -S wayfire eww-wayland-git
+
+# add user to video group  so he/she can change the brightness
+sudo usermod -aG video $USER
 
 echo "...FINISHED DESKTOP INSTALLATION"
 echo ""
