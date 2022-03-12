@@ -2,7 +2,10 @@
 (defpoll search_listen :interval "1s" "cat ./search-items.txt")
 
 ; === charge ===
-(defpoll battery :interval "15s" "scripts/battery.sh")
+(defpoll battery-runner :interval "15s" "scripts/battery.sh")
+(defpoll battery :interval "15s" "cat scripts/battery-charge.txt")
+(defpoll battery-status :interval "15s" "cat scripts/battery-status.txt")
+(defpoll notify-battery :interval "20m" "scripts/notify-battery.sh")
 
 ; === volume ===
 (defpoll volume :interval "1s" "scripts/getvol.sh")
@@ -27,3 +30,4 @@
 ; === updates ===
 (defpoll updates-runner :interval "1h" "./scripts/updates.sh")
 (defpoll updates :interval "5m" "cat ./scripts/updates.txt")
+(defpoll updates-notifier :interval "24h" "./scripts/notify-updates.sh")
