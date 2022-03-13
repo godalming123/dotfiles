@@ -77,3 +77,9 @@
 (defwidget wifi []
   "wifi"  
 )
+
+
+; === wifi
+(defwidget bluetooth []
+  "Bluetooth"  
+)

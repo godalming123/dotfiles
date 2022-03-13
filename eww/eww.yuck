@@ -105,9 +105,22 @@
                       :height "300px"
                       :anchor "bottom right"
                       :y "10px"
-                      :x "118px")
+                      :x "148px")
   :stacking "overlay"
 (wifi))
+
+
+; === define bluetooth window ===
+
+(defwindow bluetooth
+  :monitor 0
+  :geometry (geometry :width "260px"
+                      :height "300px"
+                      :anchor "bottom right"
+                      :y "10px"
+                      :x "118px")
+  :stacking "overlay"
+(bluetooth))
 
 ; === window for wallpaper ===
 
@@ -127,7 +140,7 @@
                       :height "150px"
                       :anchor "bottom right"
                       :y "10px"
-                      :x "260px")
+                      :x "298px")
   :stacking "overlay"
 (system-info))
 
