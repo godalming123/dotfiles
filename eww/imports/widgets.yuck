@@ -98,7 +98,7 @@
       ;(checkbox :onchecked "notify-send checked" :onunchecked "notify-send unchecked")
     )
     "${wifi-name == "" ? "Not connected" : "Connected to ${wifi-name}"}"
-    (button :class "btn-shape btn-color btn-big" :halign "center" :onclick "~/.config/eww/scripts/toggle-wifi.sh" "Toggle wifi")
+    (button :class "btn-shape btn-color btn-big" :halign "center" :onclick "~/.config/eww/scripts/wifi.sh --TOGGLE" "Toggle wifi")
     (button :class "btn-shape btn-color btn-big" :halign "center" :onclick "eww close wifi; ~/.config/wofi/wofi-wifi.sh" "Open full wifi menu")
     (button :class "btn-shape btn-color btn-big" :halign "center" :onclick "eww close wifi; ~/.config/wofi/wofi-wifi-alt.sh" "Open alternate full wifi menu")
   ) 

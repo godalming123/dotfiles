@@ -2,7 +2,7 @@
 (defpoll barStacking :interval "1s" "cat ./scripts/bar-stacking.txt")
 
 ; === app list ===
-(defpoll search_listen :interval "10000h" "~/.config/eww/scripts/search.sh")
+(defvar search_listen "")
 
 ; === charge ===
 (defpoll battery :interval "1s" "cat /sys/class/power_supply/BAT0/capacity")

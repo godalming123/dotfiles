@@ -2,7 +2,7 @@
 (defwidget centerStuff []
   ;(revealer :transition "slideright" :reveal true :duration "150ms")
     (button :tooltip "Menu - Show favouroute apps - super" :halign "start" :class "menu-button btn"
-            :onclick "eww close bluetooth updates sys-info notifucations wifi calendar; eww open --toggle menu"
+            :onclick "eww close bluetooth updates sys-info notifucations wifi calendar; eww open --toggle menu & ./scripts/search.sh"
       (image :path "./icons/dark/feather.png" :image-height 18)
     )
   ;)
