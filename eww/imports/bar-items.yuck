@@ -14,7 +14,7 @@
 ; === right ===
 (defwidget rightStuff []
   (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end"
-    (box :onclick "eww close updates menu notifucations calendar wifi; eww open --toggle sys-info" :orientation "h" :space-evenly false
+     (box :orientation "h" :space-evenly false
         ; volume
         (imic :tooltip "Volume: ${volume}%"
               :icon "./icons/dark/audio.png"
@@ -45,6 +45,9 @@
               :icon "./icons/dark/battery${battery-status == "Charging" ? "-charging" : ""}.png"
               :value battery
               :onchange "")
+    )
+    (button :class "btn" :onclick "eww close updates menu notifucations calendar wifi; eww open --toggle sys-info"
+      (image :path "./icons/dark/more_vertical.png" :image-height 18)
     )
     ; wifi
     (button :tooltip "${wifi-name == "" ? "Not connected" : "Connected to ${wifi-name} "}" :class "btn" :onclick "eww close updates sys-info menu notifucations calendar; eww open --toggle wifi"

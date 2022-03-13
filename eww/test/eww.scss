@@ -1,3 +1,4 @@
+
 // === blue color scheme ===
 $bg: #2d343a;
 $fg: #b0b4bc;
@@ -89,7 +90,7 @@ window:not(.bar), tooltip {
 // === DIALOG ===
 
 .dialog-headerbar {
-  padding: 0px 5px;
+  padding: 0 5px;
   & > button {
     border-radius: 99px;
     min-width: 20px;
@@ -99,7 +100,7 @@ window:not(.bar), tooltip {
 // === CLOCK + CALENDER ===
 
 calendar {
-	padding: 5px 0px;
+	padding: 5px 0;
   &:selected {
     background: $highlight-alt;
     border-radius: 50px;
@@ -145,7 +146,7 @@ calendar {
 
 .btn {
   @include trans();
-  padding: 1px 5px;
+  padding: 1 5;
   &:hover, &:focus {
     background-color: $grey-alt;
   }
@@ -192,3 +193,5 @@ calendar {
      min-height: 10px;
   }
 }
+
+

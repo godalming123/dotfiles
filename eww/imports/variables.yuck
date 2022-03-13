@@ -2,10 +2,9 @@
 (defpoll search_listen :interval "1s" "cat ./search-items.txt")
 
 ; === charge ===
-(defpoll battery-runner :interval "15s" "scripts/battery.sh")
-(defpoll battery :interval "15s" "cat scripts/battery-charge.txt")
-(defpoll battery-status :interval "15s" "cat scripts/battery-status.txt")
-(defpoll notify-battery :interval "20m" "scripts/notify-battery.sh")
+(defpoll battery :interval "1s" "cat /sys/class/power_supply/BAT0/capacity")
+(defpoll battery-status :interval "1s" "cat /sys/class/power_supply/BAT0/status")
+(defpoll notify-battery :interval "1m" "~/.config/eww/scripts/notify-battery.sh")
 
 ; === volume ===
 (defpoll volume :interval "1s" "scripts/getvol.sh")
@@ -28,6 +27,5 @@
 (defpoll disk-usage :interval "5m" "echo $(df | grep / | awk '{ print $5 }' | sed 's/[^0-9]//g' )")
 
 ; === updates ===
-(defpoll updates-runner :interval "1h" "./scripts/updates.sh")
-(defpoll updates :interval "5m" "cat ./scripts/updates.txt")
-(defpoll updates-notifier :interval "24h" "./scripts/notify-updates.sh")
+(defpoll updates :interval "5m" "~/.config/eww/scripts/updates.sh; cat ./scripts/updates.txt")
+(defpoll updates-notifier :interval "24h" "~/.config/scripts/notify-updates.sh")

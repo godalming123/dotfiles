@@ -126,7 +126,7 @@
                       :height "150px"
                       :anchor "bottom right"
                       :y "10px"
-                      :x "227px")
+                      :x "260px")
   :stacking "overlay"
 (system-info))
 
