@@ -13,7 +13,8 @@
                       :height "30px"
                       :anchor "bottom center")
   :exclusive true
-  :stacking "overlay"
+  ;:stacking barStacking ; doesnt work
+  :stacking "fg"
   (centerbox :orientation "h"
     (leftStuff)
     (centerStuff)

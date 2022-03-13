@@ -1,5 +1,5 @@
 # TODO
-- make menu window search work
+- make menu search window work
 - add more icons
 - add more settings
 - make popup windows hide when they lose focus

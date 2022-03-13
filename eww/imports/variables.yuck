@@ -1,10 +1,13 @@
+; === bar stacking ===
+(defpoll barStacking :interval "1s" "cat ./scripts/bar-stacking.txt")
+
 ; === app list ===
 (defpoll search_listen :interval "1s" "cat ./search-items.txt")
 
 ; === charge ===
 (defpoll battery :interval "1s" "cat /sys/class/power_supply/BAT0/capacity")
 (defpoll battery-status :interval "1s" "cat /sys/class/power_supply/BAT0/status")
-(defpoll notify-battery :interval "1m" "~/.config/eww/scripts/notify-battery.sh")
+(defpoll notify-battery :interval "1m" "~/.config/eww/scripts/notify-battery.sh") ; this will not run since the variable is not being used
 
 ; === volume ===
 (defpoll volume :interval "1s" "scripts/getvol.sh")
@@ -28,4 +31,4 @@
 
 ; === updates ===
 (defpoll updates :interval "5m" "~/.config/eww/scripts/updates.sh; cat ./scripts/updates.txt")
-(defpoll updates-notifier :interval "24h" "~/.config/scripts/notify-updates.sh")
+(defpoll updates-notifier :interval "24h" "~/.config/scripts/notify-updates.sh") ; this will not run since the variable is not being used
