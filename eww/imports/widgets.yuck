@@ -7,14 +7,6 @@
 (defwidget system-info []
     (box :orientation "h" :valign "center" :halign "middle" :space-evenly true
       (box :orientation "v" :valign "center" :halign "middle" :space-evenly false
-        (circular-progress :start-angle 90 :thickness 20 :clockwise true :value volume)
-        "VOL"
-      )
-      (box :orientation "v" :valign "center" :halign "middle" :space-evenly false
-        (circular-progress :start-angle 90 :thickness 20 :clockwise true :value brightness)
-        "BRIGHT"
-      )
-      (box :orientation "v" :valign "center" :halign "middle" :space-evenly false
         (circular-progress :start-angle 90 :thickness 20 :clockwise true :value {EWW_RAM.used_mem_perc})
         "RAM"
       )
