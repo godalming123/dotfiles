@@ -2,7 +2,7 @@
 (defpoll barStacking :interval "1s" "cat ./scripts/bar-stacking.txt")
 
 ; === app list ===
-(defpoll search_listen :interval "1s" "cat ./search-items.txt")
+(defpoll search_listen :interval "10000h" "~/.config/eww/scripts/search.sh")
 
 ; === charge ===
 (defpoll battery :interval "1s" "cat /sys/class/power_supply/BAT0/capacity")
@@ -24,7 +24,8 @@
 (defpoll brightness :interval "1s" "scripts/brightness.sh")
 
 ; === wifi ===
-(defpoll wifi-name :interval "1m" "./scripts/wifi.sh --ESSID")
+(defpoll wifi-name :interval "15s" "./scripts/wifi.sh --ESSID")
+(defpoll wifi-connectivity :interval "15s" "nmcli -fields WIFI g")
 
 ; === disk ===
 (defpoll disk-usage :interval "5m" "echo $(df | grep / | awk '{ print $5 }' | sed 's/[^0-9]//g' )")

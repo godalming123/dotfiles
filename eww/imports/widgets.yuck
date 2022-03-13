@@ -5,7 +5,32 @@
 
 ; === system info ===
 (defwidget system-info []
-    "system info"
+    (box :orientation "h" :valign "center" :halign "middle" :space-evenly true
+      (box :orientation "v" :valign "center" :halign "middle" :space-evenly false
+        (circular-progress :start-angle 90 :thickness 20 :clockwise true :value volume)
+        "VOL"
+      )
+      (box :orientation "v" :valign "center" :halign "middle" :space-evenly false
+        (circular-progress :start-angle 90 :thickness 20 :clockwise true :value brightness)
+        "BRIGHT"
+      )
+      (box :orientation "v" :valign "center" :halign "middle" :space-evenly false
+        (circular-progress :start-angle 90 :thickness 20 :clockwise true :value {EWW_RAM.used_mem_perc})
+        "RAM"
+      )
+      (box :orientation "v" :valign "center" :halign "middle" :space-evenly false
+        (circular-progress :start-angle 90 :thickness 20 :clockwise true :value {EWW_CPU.avg})
+        "CPU"
+      )
+      (box :orientation "v" :valign "center" :halign "middle" :space-evenly false
+        (circular-progress :start-angle 90 :thickness 20 :clockwise true :value {(EWW_DISK["/"].used / EWW_DISK["/"].total) * 100})
+        "DISK"
+      )
+      (box :orientation "v" :valign "center" :halign "middle" :space-evenly false
+        (circular-progress :start-angle 90 :thickness 20 :clockwise true :value battery)
+        "BAT"
+      )
+    )
 )
 
 ; === updates menu ===
@@ -40,8 +65,8 @@
         )
       )
       (box :orientation "v" :space-evenly false :class "search-win" :valign "fill" :halign "fill"
+        (literal :vexpand true :hexpand true :halign "fill" :valign "end" :class "app-container" :content search_listen)
         (input :class "search-bar" :onchange "~/.config/eww/scripts/search.sh {}")
-        (literal :vexpand "true" :halign "fill" :valign "fill" :class "app-container" :content search_listen)
         ; "TODO: app menu"
       )
       
@@ -75,9 +100,17 @@
 
 ; === wifi
 (defwidget wifi []
-  "wifi"  
+  (box :orientation "v" :valign "fill" :halign "fill" :space-evenly false
+    (box :orientation "h" :valign "start"
+      (label :class "bold" :halign "middle" :text "WIFI")
+      ;(checkbox :onchecked "notify-send checked" :onunchecked "notify-send unchecked")
+    )
+    "${wifi-name == "" ? "Not connected" : "Connected to ${wifi-name}"}"
+    (button :class "btn-shape btn-color btn-big" :halign "center" :onclick "~/.config/eww/scripts/toggle-wifi.sh" "Toggle wifi")
+    (button :class "btn-shape btn-color btn-big" :halign "center" :onclick "eww close wifi; ~/.config/wofi/wofi-wifi.sh" "Open full wifi menu")
+    (button :class "btn-shape btn-color btn-big" :halign "center" :onclick "eww close wifi; ~/.config/wofi/wofi-wifi-alt.sh" "Open alternate full wifi menu")
+  ) 
 )
-
 
 ; === wifi
 (defwidget bluetooth []

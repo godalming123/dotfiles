@@ -5,10 +5,12 @@
 
 ; === left ===
 (defwidget leftStuff []
-  (button :tooltip "Menu - Show favouroute apps - super" :halign "start" :class "menu-button btn"
-          :onclick "eww close bluetooth updates sys-info notifucations wifi calendar; eww open --toggle menu"
-    (image :path "./icons/dark/feather.png" :image-height 18)
-  )
+  ;(revealer :transition "slideright" :reveal true :duration "150ms")
+    (button :tooltip "Menu - Show favouroute apps - super" :halign "start" :class "menu-button btn"
+            :onclick "eww close bluetooth updates sys-info notifucations wifi calendar; eww open --toggle menu"
+      (image :path "./icons/dark/feather.png" :image-height 18)
+    )
+  ;)
 )
 
 ; === right ===
@@ -44,8 +46,8 @@
               :value {(EWW_DISK["/"].used / EWW_DISK["/"].total) * 100}
               :onchange "")
         ; battery
-        (imic :tooltip "${battery}% battery ${battery-status == "Charging" ? "and charging" : ""}"
-              :icon "./icons/dark/battery${battery-status == "Charging" ? "-charging" : ""}.png"
+        (imic :tooltip "${battery}% battery ${battery-status != "Discharging" ? "and charging" : ""}"
+              :icon "./icons/dark/battery${battery-status != "Discharging" ? "-charging" : ""}.png"
               :value battery
               :onchange "")
     )

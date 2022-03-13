@@ -136,11 +136,11 @@
 
 (defwindow sys-info
   :monitor 0
-  :geometry (geometry :width "600px"
-                      :height "150px"
+  :geometry (geometry :width "400px"
+                      :height "80px"
                       :anchor "bottom right"
                       :y "10px"
-                      :x "298px")
+                      :x "398px")
   :stacking "overlay"
 (system-info))
 
