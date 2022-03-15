@@ -151,16 +151,21 @@ calendar {
   }
 }
 
-.btn-big {
-  padding: 8px;
-  margin: 5px;
-}
-
 .btn-shape {
   @include trans();
   border-radius: 5px;
   padding: 5px;
   margin: 3px;
+}
+
+.btn-small {
+  padding: 0 3px;
+  margin: 0;
+}
+
+.btn-big {
+  padding: 8px;
+  margin: 5px;
 }
 
 .btn-color {
@@ -191,4 +196,12 @@ calendar {
   &:hover {
      min-height: 10px;
   }
+}
+
+// === LISTS ===
+
+.list-item {
+  padding: 4px 2px;
+  font-size: 15px;
+  margin: 0;
 }

@@ -29,7 +29,7 @@
 (defwidget updates-menu []
     (box :orientation "v" :valign "center" :halign "middle" :space-evenly false
       "You have ${updates} updates"
-      (button :class "btn-shape btn-color${updates == 0 ? "-inactive" : ""} btn-big" :halign "center" :onclick "eww close updates; alacritty -e paru &" "get updates")
+      (button :class "btn-shape btn-color${updates == 0 ? "-inactive" : ""} btn-big" :halign "center" :onclick "eww close updates; alacritty -e paru --noconfirm -Syu; ~/.config/eww/scripts/updates.sh; eww update updates=$(cat ~/.config/eww/scripts/updates.txt)" "get updates")
     )
 )
 
@@ -93,15 +93,11 @@
 ; === wifi
 (defwidget wifi []
   (box :orientation "v" :valign "fill" :halign "fill" :space-evenly false
-    (box :orientation "h" :valign "start"
-      (label :class "bold" :halign "middle" :text "WIFI")
-      ;(checkbox :onchecked "notify-send checked" :onunchecked "notify-send unchecked")
+    (button :class "btn" :halign "fill" :onclick "~/.config/eww/scripts/wifi.sh --TOGGLE"
+      (label :class "bold" :halign "center" :text "WIFI - ${wifi-enabled == "true" ? "${wifi-name == "" ? "Not connected" : "Connected to ${wifi-name}"}" : "Off"}")
     )
-    "${wifi-name == "" ? "Not connected" : "Connected to ${wifi-name}"}"
-    (button :class "btn-shape btn-color btn-big" :halign "center" :onclick "~/.config/eww/scripts/wifi.sh --TOGGLE" "Toggle wifi")
-    (button :class "btn-shape btn-color btn-big" :halign "center" :onclick "eww close wifi; ~/.config/wofi/wofi-wifi.sh" "Open full wifi menu")
-    (button :class "btn-shape btn-color btn-big" :halign "center" :onclick "eww close wifi; ~/.config/wofi/wofi-wifi-alt.sh" "Open alternate full wifi menu")
-  ) 
+    (literal :vexpand true :hexpand true :halign "fill" :valign "end" :class "wifi-container" :content wifi-networks)
+  )
 )
 
 ; === wifi

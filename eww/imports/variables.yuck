@@ -24,8 +24,9 @@
 (defpoll brightness :interval "1s" "scripts/brightness.sh")
 
 ; === wifi ===
-(defpoll wifi-name :interval "15s" "./scripts/wifi.sh --ESSID")
-(defpoll wifi-connectivity :interval "15s" "nmcli -fields WIFI g")
+(defpoll wifi-name :interval "1s" "./scripts/wifi.sh ESSID")
+(defpoll wifi-enabled :interval "1s" "./scripts/wifi.sh ENABLED")
+(defpoll wifi-networks :interval "15s" "./scripts/wifi.sh LIST-FORMAT")
 
 ; === disk ===
 (defpoll disk-usage :interval "5m" "echo $(df | grep / | awk '{ print $5 }' | sed 's/[^0-9]//g' )")

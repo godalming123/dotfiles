@@ -8,4 +8,4 @@ updates_aur=$(checkupdates-aur 2> /dev/null | wc -l)
 
 updates=$((updates_arch + updates_aur))
 
-echo "$updates" > ./scripts/updates.txt
+echo "$updates" > ~/.config/eww/scripts/updates.txt

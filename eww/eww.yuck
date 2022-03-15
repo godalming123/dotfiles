@@ -102,7 +102,7 @@
 (defwindow wifi
   :monitor 0
   :geometry (geometry :width "260px"
-                      :height "300px"
+                      :height "100px"
                       :anchor "bottom right"
                       :y "10px"
                       :x "148px")

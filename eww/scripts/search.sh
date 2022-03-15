@@ -1,12 +1,15 @@
 #!/bin/sh
-list=$(ls /usr/bin/ | grep -m 20 -i "$1")
+list=$(find /usr/share/applications -name '*.desktop' | grep -m 20 -i "$1")
 
 if ["$1" == ""]; then
   result="(label :text \"test\")"
 else
   buf=""
   for name in $list ; do
-    buf="(button :hexpand true :halign \"fill\" :valign \"fill\" :class \"btn\" :style \"padding: 4px 2px;font-size: 15px;margin: 0;\" :onclick \"eww close menu & $name &\" \"$name\" ) $buf"
+    text=$(cat $name)
+    name=$(echo "$text" | awk -F "=" '/Name=/ {print $2}' | head -n 1)
+    exec=$(echo "$text" | awk -F "=" '/Exec=/ {print $2}' | head -n 1)
+    buf="(button :hexpand true :halign \"fill\" :valign \"fill\" :class \"btn list-item\" :onclick \"eww close menu & $exec &\" \"$name\" ) $buf"
   done
   result="(box :orientation \"v\" :class \"apps\" :halign \"fill\" :valign \"fill\" :hexpand true :space-evenly false $buf)"
 fi
