@@ -9,7 +9,7 @@ help_text="WIFI-MAN V1 - a tool to connect to wifi networks
 [c]OMPLEX-LIST       list all properties of wifi networks
 [L]IST-FORMAT     list all properties of wifi networks with an eww format
 [t]OGGLE          toggle wifi on/off
-[u]ONNECT-UNKNOWN connect to an unknown network where 2nd argument is name and 3rd argument is password
+[u]ONNECT-UNKNOWN connect to an unknown network where 2nd argument is name, 3rd argument is password and 4th argument is security
 [k]ONNECT-KNOWN   connect to a known network where 2nd argument is the network name
 [C]ONNECT         an aliases to connect-unknown TODO: dynamically change between connect unknown and connect-known depending on if the network is known
 [d]ISCONNECT      disconnect from connected network
@@ -52,13 +52,19 @@ L | "LIST-FORMAT")
             else
                 locking_icon="(image :path \"./icons/dark/lock.png\" :image-height 20)"
             fi
-            text="\n        (box :space-evenly false :halign \"fill\" :orientation \"h\" $locking_icon \"$network_name\")\n    "
-            buf="    (button :hexpand true :halign \"fill\" :class \"btn list-item\" :onclick \"~/.config/eww/scripts/wifi.sh CONNECT '$network_name'\" $text)\n$buf"
+            if [[ network_in_use == "*" ]]; then
+                wifi_in_use_icon="(image :path \"./icons/dark/wifi.png\" :image-height 20)"
+            else
+                # wifi_in_use_icon="\"$network_in_use=\""
+                echo ""
+            fi
+            text="\n        (box :space-evenly false :halign \"fill\" :orientation \"h\" $locking_icon \"$network_name\" $wifi_in_use_icon)\n    "
+            buf="    (button :hexpand true :halign \"fill\" :class \"btn list-item\" :onclick \"~/.config/eww/scripts/wifi.sh CONNECT '$network_name' '' '$network_security' \" $text)\n$buf"
         done
     else
-        buf="WIFI disabled"
+        buf="(label :valign \"center\" :text \"WIFI disabled\")"
     fi    
-    echo -e "(box :orientation \"v\" :class \"wifi-networks\" :halign \"fill\" :valign \"end\" :hexpand true :space-evenly false\n$buf)"
+    echo -e "(box :orientation \"v\" :class \"wifi-networks\" :hexpand true :halign \"fill\" :valign \"center\" :space-evenly false\n$buf)"
     ;;
 
 t | "TOGGLE")
@@ -79,7 +85,7 @@ E | "ENABLED")
     ;;
 
 u | "CONNECT-UNKNOWN")
-    network_security=$(nmcli --fields "SECURITY,SSID" | grep -i "$2")
+    network_security=$4
     if [[ "$3" == "" ]]; then
         if [[ "$network_security" != "" ]]; then
             # if no password is supplied and the network has a password
@@ -100,7 +106,7 @@ k | "CONNECT-KNOWN")
     ;;
 
 C | "CONNECT")
-    ~/.config/eww/scripts/wifi.sh CONNECT-UNKNOWN $2 $3
+    ~/.config/eww/scripts/wifi.sh CONNECT-UNKNOWN $2 $3 $4
     ;;
 
 D | "DISCONNECT")

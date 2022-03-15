@@ -53,7 +53,7 @@
           :onchange "light -S {}")
     ; wifi
     (button :tooltip "${wifi-name == "" ? "Not connected" : "Connected to ${wifi-name} "}" :class "btn" :onclick "eww close bluetooth updates sys-info menu notifucations calendar; eww open --toggle wifi"
-        (image :path "./icons/dark/wifi.png" :image-height 18)
+        (image :path "${wifi-enabled == "true" ? "./icons/dark/wifi.png" : "./icons/dark/wifi-off.png"}" :image-height 18)
     )
     ; bluetooth
     (button :tooltip "Bluetooth" :class "btn" :onclick "eww close updates sys-info menu notifucations calendar wifi; eww open --toggle bluetooth"

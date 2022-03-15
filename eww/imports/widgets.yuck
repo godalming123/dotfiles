@@ -93,7 +93,7 @@
 ; === wifi
 (defwidget wifi []
   (box :orientation "v" :valign "fill" :halign "fill" :space-evenly false
-    (button :class "btn" :halign "fill" :onclick "~/.config/eww/scripts/wifi.sh --TOGGLE"
+    (button :class "btn list-item" :halign "fill" :onclick "~/.config/eww/scripts/wifi.sh TOGGLE"
       (label :class "bold" :halign "center" :text "WIFI - ${wifi-enabled == "true" ? "${wifi-name == "" ? "Not connected" : "Connected to ${wifi-name}"}" : "Off"}")
     )
     (literal :vexpand true :hexpand true :halign "fill" :valign "end" :class "wifi-container" :content wifi-networks)

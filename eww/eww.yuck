@@ -52,7 +52,7 @@
 
 (defwindow menu
   :monitor 0
-  :geometry (geometry :width "300px"
+  :geometry (geometry :width "200px"
                       :height "500px"
                       :anchor "bottom center"
                       :y "10px"
