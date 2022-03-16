@@ -1,7 +1,6 @@
 #!/bin/sh
 
-connected=$(nmcli c | grep wlan0 | awk '{print ($1)}')
-help_text="WIFI-MAN V1 - a tool to connect to wifi networks
+help_text="WIFI-MAN V1.1 - a tool to connect to wifi networks
 ================================================
 [e]SSID           print the currently connected network (blank string when unconnected)
 [l]IST            list avialable wifi networks
@@ -21,7 +20,7 @@ if argument mathces none of the above this help text will be shown
 
 case $1 in
 e | "ESSID")
-	echo "$connected"
+	echo "$(nmcli c | grep wlan0 | awk '{print ($1)}')"
     ;;
 
 l | "LIST")
@@ -38,9 +37,9 @@ c | "COMPLEX-LIST")
 
 L | "LIST-FORMAT")
     if [[ "$(~/.config/eww/scripts/wifi.sh ENABLED)" == "true" ]]; then
-        IFS=$'\n'       # make newlines the only separator
-        set -f          # disable globbing
-    	list=$(~/.config/eww/scripts/wifi.sh LIST | tail -n +2)
+        IFS=$'\n'                                               # make newlines the only separator
+        set -f                                                  # disable globbing
+    	list=$(~/.config/eww/scripts/wifi.sh LIST | tail -n +2) # setup our list and remove the headers with tail
 
         buf=""
         for line in $list; do
@@ -84,13 +83,9 @@ E | "ENABLED")
     ;;
 
 u | "CONNECT-UNKNOWN")
-    nmcli con down "$(~/eww/scripts/wifi.sh ESSID)"
-    network_security=$4
-    if [[ "$3" == "queryPass" ]]; then
-        if [[ "$network_security" != "--" ]]; then
-            # if no password is supplied and the network has a password
-            password=$(wofi -H 60 --style ~/.config/wofi/styles.css --show dmenu -p "Password for $2: ")
-        fi
+    ~/eww/scripts/wifi.sh DISCONNECT
+    if [[ "$3" == "queryPass" ]] && [[ "$4" != "--" ]]; then # if the password is queryPass and the network has a password
+        password=$(wofi -H 60 --style ~/.config/wofi/styles.css --show dmenu -p "Password for $2: ")
     else
         password=$3
     fi
@@ -99,7 +94,7 @@ u | "CONNECT-UNKNOWN")
     ;;
 
 k | "CONNECT-KNOWN")
-    nmcli con down "$(~/eww/scripts/wifi.sh ESSID)"
+    ~/eww/scripts/wifi.sh DISCONNECT
     nmcli con up $2
     ;;
 
@@ -113,7 +108,7 @@ C | "CONNECT")
     ;;
 
 D | "DISCONNECT")
-    nmcli con down $connected
+    nmcli con down "$(~/eww/scripts/wifi.sh ESSID)"
     ;;
 
 i | "INFO")
