@@ -9,7 +9,7 @@ help_text="WIFI-MAN V1 - a tool to connect to wifi networks
 [c]OMPLEX-LIST       list all properties of wifi networks
 [L]IST-FORMAT     list all properties of wifi networks with an eww format
 [t]OGGLE          toggle wifi on/off
-[u]ONNECT-UNKNOWN connect to an unknown network where 2nd argument is name, 3rd argument is password and 4th argument is security
+[u]ONNECT-UNKNOWN connect to an unknown network where 2nd argument is name, 3rd argument is password (use 'queryPass' to use wofi to find the password) and 4th argument is security
 [k]ONNECT-KNOWN   connect to a known network where 2nd argument is the network name
 [C]ONNECT         an aliases to connect-unknown TODO: dynamically change between connect unknown and connect-known depending on if the network is known
 [d]ISCONNECT      disconnect from connected network
@@ -25,15 +25,15 @@ e | "ESSID")
     ;;
 
 l | "LIST")
-	echo "$(nmcli --fields "SSID,SECURITY,IN-USE" dev wifi list)"
+	echo "$(nmcli --fields "SSID,SECURITY,IN-USE" dev wifi list | awk '!a[$0]++')"
     ;;
 
 s| "SIMPLE-LIST")
-	echo "$(nmcli --fields "SSID" dev wifi list)"
+	echo "$(nmcli --fields "SSID" dev wifi list | awk '!a[$0]++')"
     ;;
 
 c | "COMPLEX-LIST")
-	echo "$(nmcli dev wifi list)"
+	echo "$(nmcli dev wifi list | awk '!a[$0]++')"
     ;;
 
 L | "LIST-FORMAT")
@@ -47,19 +47,18 @@ L | "LIST-FORMAT")
             network_name=$(echo "$line" | awk '{print $1}')
             network_security=$(echo "$line" | awk '{print $2}')
             network_in_use=$(echo "$line" | awk '{print $3}')
-            if [[ network_security == "" ]]; then
+            if [[ "$network_security" == "--" ]]; then
                 locking_icon=""
             else
                 locking_icon="(image :path \"./icons/dark/lock.png\" :image-height 20)"
             fi
-            if [[ network_in_use == "*" ]]; then
+            if [[ "$network_in_use" == "*" ]]; then
                 wifi_in_use_icon="(image :path \"./icons/dark/wifi.png\" :image-height 20)"
             else
-                # wifi_in_use_icon="\"$network_in_use=\""
-                echo ""
+                wifi_in_use_icon=""
             fi
-            text="\n        (box :space-evenly false :halign \"fill\" :orientation \"h\" $locking_icon \"$network_name\" $wifi_in_use_icon)\n    "
-            buf="    (button :hexpand true :halign \"fill\" :class \"btn list-item\" :onclick \"~/.config/eww/scripts/wifi.sh CONNECT '$network_name' '' '$network_security' \" $text)\n$buf"
+            text="\n        (box :space-evenly false :halign \"fill\" :orientation \"h\" \"$network_name\" $locking_icon $wifi_in_use_icon)\n    "
+            buf="    (button :hexpand true :halign \"fill\" :class \"btn list-item\" :onclick \"eww close wifi; ~/.config/eww/scripts/wifi.sh CONNECT '$network_name' 'queryPass' '$network_security' \" $text)\n$buf"
         done
     else
         buf="(label :valign \"center\" :text \"WIFI disabled\")"
@@ -85,28 +84,32 @@ E | "ENABLED")
     ;;
 
 u | "CONNECT-UNKNOWN")
+    nmcli con down "$(~/eww/scripts/wifi.sh ESSID)"
     network_security=$4
-    if [[ "$3" == "" ]]; then
-        if [[ "$network_security" != "" ]]; then
+    if [[ "$3" == "queryPass" ]]; then
+        if [[ "$network_security" != "--" ]]; then
             # if no password is supplied and the network has a password
-            password=$(wofi --show dmenu -p "Password")
-            notify-send test1
+            password=$(wofi -H 60 --style ~/.config/wofi/styles.css --show dmenu -p "Password for $2: ")
         fi
-        notify-send test3
     else
         password=$3
-        notify-send test2
     fi
-    nmcli dev wifi connect $2 password $password
-    notify-send "Name: $2 Password: '$password'"
+    nmcli dev wifi connect "$2" password "$password"
+    notify-send -t 5000 "Connection complete"
     ;;
 
 k | "CONNECT-KNOWN")
+    nmcli con down "$(~/eww/scripts/wifi.sh ESSID)"
     nmcli con up $2
     ;;
 
 C | "CONNECT")
-    ~/.config/eww/scripts/wifi.sh CONNECT-UNKNOWN $2 $3 $4
+    knownLine=$(nmcli con show | grep "$2 ")
+    if [[ "$knownLine" == "" ]]; then # if we have not connected to the wifi before
+        ~/.config/eww/scripts/wifi.sh CONNECT-UNKNOWN $2 $3 $4
+    else # if we have connected to the wifi before
+        ~/.config/eww/scripts/wifi.sh CONNECT-KNOWN $2
+    fi
     ;;
 
 D | "DISCONNECT")
