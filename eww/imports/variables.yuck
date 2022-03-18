@@ -1,6 +1,12 @@
 ; === bar stacking ===
 (defpoll barStacking :interval "1m" "cat ./scripts/bar-stacking.txt")
 
+; === brightness ===
+(defvar brightness "")
+
+; === volume ===
+(defvar volume "")
+
 ; === app list ===
 (defvar search_listen "")
 

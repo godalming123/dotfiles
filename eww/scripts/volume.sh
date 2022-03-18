@@ -13,12 +13,12 @@ if argument mathces none of the above this help text will be shown
 case $1 in
 
 g | "get")
-    amixer -D pulse sget Master | grep 'Left:' | awk -F'[][]' '{ print $2 }' | tr -d '%' | head -1
+    amixer get Master | grep 'Left:' | awk -F'[][]' '{ print $2 }' | tr -d '%' | head -1
     ;;
 
 s | "set")
     amixer set Master $2%
-    ~/.config/eww/scripts/volume.sh update
+    # ~/.config/eww/scripts/volume.sh update
     ;;
 
 i | "increase")
@@ -34,6 +34,7 @@ d | "decrease")
 
 
 u | "update")
+    # killlall "eww update"
     eww update volume="$(~/.config/eww/scripts/volume.sh get)"
     ;;
 

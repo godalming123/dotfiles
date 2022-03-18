@@ -5,5 +5,8 @@
 - add a system information popup
 - update the updates counter after the update is completed
 - swaylock after period of inactivity
+- fix calender background alignment
+- add clear indicator when changing brightness with keyboard
+- make sliders have animations when updated
 - fix brightness keys and brightness menu - DONE
 - add more icons - DONE
