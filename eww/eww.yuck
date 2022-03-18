@@ -132,6 +132,14 @@
   :stacking "bg"
 (box :class "background-image" :valign "fill" :halign "fill"))
 
+(defwindow background2
+  :monitor 1
+  :geometry (geometry :width "100%"
+                      :height "100%"
+                      :anchor "center")
+  :stacking "bg"
+(box :class "background-image" :valign "fill" :halign "fill"))
+
 ; === window for system info ===
 
 (defwindow sys-info
