@@ -56,6 +56,7 @@ if status is-interactive
     # = other aliases =
     alias screens='kanshi' &
     alias config='cd ~/Documents/coding\ repos/dotfiles/; micro fish/config.fish sys-info/ufetch-endevour.sh wayfire/wayfire.ini wayfire/wf-shell.ini alacritty/alacritty.yml wofi/styles.css wofi/wifi wofi/wofi-wifi.sh mako/config micro/bindings.json micro/settings.json' &
+    alias vcon='cd ~/Documents/coding\ repos/dotfiles/; vim -p ~/.vimrc fish/config.fish sys-info/ufetch-endevour.sh wayfire/wayfire.ini wayfire/wf-shell.ini alacritty/alacritty.yml wofi/styles.css wofi/wifi wofi/wofi-wifi.sh mako/config micro/bindings.json micro/settings.json eww/eww.yuck eww/eww.scss eww/imports/widgets.yuck eww/imports/bar-items.yuck' &
     alias pacman='sudo pacman' &
     alias wayfire='dbus-run-session wayfire' &
     alias concd='cd ~/Documents/coding\ repos/dotfiles/; cd $1' &
