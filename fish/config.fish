@@ -61,6 +61,7 @@ if status is-interactive
     alias gomote='git remote' &
     alias giff='git diff' &
     alias gog='git log' &
+    alias gull='git pull' &
 
     # = other aliases =
     alias screens='kanshi' &
