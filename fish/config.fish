@@ -62,6 +62,7 @@ if status is-interactive
     alias giff='git diff' &
     alias gog='git log' &
     alias gull='git pull' &
+    alias gonfig='git config'
 
     # = other aliases =
     alias screens='kanshi' &
