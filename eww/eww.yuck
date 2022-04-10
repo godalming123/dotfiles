@@ -15,7 +15,7 @@
   :exclusive true
   ;:stacking barStacking ; doesnt work
   :stacking "fg"
-  (centerbox :orientation "h"
+  (centerbox :orientation "h" :class "bar"
     (leftStuff)
     (centerStuff)
     (rightStuff)
@@ -126,9 +126,14 @@
 
 (defwindow background
   :monitor 0
-  :geometry (geometry :width "100%"
+  ; for normal wallpaper
+  ;:geometry (geometry :width "100%"
+  ;                    :height "100%"
+  ;                    :anchor "center")
+  ; for wallpaper in top right
+  :geometry (geometry :width "700px"
                       :height "100%"
-                      :anchor "center")
+                      :anchor "top right")
   :stacking "bg"
 (box :class "background-image" :valign "fill" :halign "fill"))
 

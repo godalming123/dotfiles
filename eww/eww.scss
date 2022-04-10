@@ -1,13 +1,29 @@
 // === blue color scheme ===
-$bg: #2d343a;
-$fg: #b0b4bc;
-$grey-alt: #35404b;
-$grey: #3d464e;
-$inactive: #495055;
-$highlight: #81A1C1;
-$highlight-alt: #5d92c7;
-$highlight-alt-darken: #517fad;
-$highlight-2: #96ddc5;
+//$bg: #2d343a;
+//$fg: #b0b4bc;
+//$grey-alt: #35404b;
+//$grey: #3d464e;
+//$inactive: #495055;
+//$highlight: #81A1C1;
+//$highlight-alt: #5d92c7;
+//$highlight-alt-darken: #517fad;
+//$highlight-2: #96ddc5;
+
+// === gradient color scheme ===
+$fg: #b0b4bc;                      // the color for all text
+
+$bg: rgba(38, 38, 38, 1);          // the color of the bar *opacity currently doesnt work as there is a bug*
+$grey-alt: rgba(65, 65, 65, 1);    // the color for buttons in the bar on hover
+$grey: rgba(70, 70, 70, 1);        // the color for all windows
+$grey-other: rgba(60, 60, 60, 1);  // bacground for sliders
+$inactive: rgba(46, 46, 46, 1);    // the color for inactive buttons
+
+$highlight: #bf2e3d;               // used in sliders begining
+$highlight-2: #cf7c41;
+$highlight-alt: #bf2e3d;           //used in active buttons
+$highlight-2-alt: #cf7c41;
+$highlight-alt-darken: #992430;    // used in hovered buttons
+$highlight-2-alt-darken: #a85c34;
 
 // === grey colors ===
 // $bg: #383838;
@@ -59,15 +75,15 @@ $highlight-2: #96ddc5;
   transition: 300ms;
 }
 
-.bar {
-  background-color: $bg;
-  color: $fg;
-}
-
-window:not(.bar), tooltip {
+window:not(bar), tooltip {
 	  background-color: $grey;
 	  padding: 10px;
 	  border-radius: 10px;
+}
+
+.bar {
+  background-color: $bg;
+  color: $fg;
 }
 
 .sidemenu-btns button {
@@ -80,7 +96,7 @@ window:not(.bar), tooltip {
 // === BACKGROUND IMAGE ===
 
 .background-image {
-  background-image: url("./wallpapers/windows-11-dark.jpg");
+  background-image: url("./wallpapers/abstract-gradient.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -101,7 +117,8 @@ window:not(.bar), tooltip {
 calendar {
 	padding: 5px 0px;
   &:selected {
-    background: $highlight-alt;
+    //background-color: $highlight-alt;
+    background-image: linear-gradient(to right, $highlight-alt, $highlight-2-alt);
     border-radius: 50px;
     min-height: 20px;
   }
@@ -169,9 +186,11 @@ calendar {
 }
 
 .btn-color {
-  background: $highlight-alt;
+  //background-color: $highlight-alt;
+  background-image: linear-gradient(to right, $highlight-alt, $highlight-2-alt);
   &:hover {
-    background: $highlight-alt-darken;
+    //background-color: $highlight-alt-darken;
+    background-image: linear-gradient(to right, $highlight-alt-darken, $highlight-2-alt-darken);
   }
 }
 
@@ -182,11 +201,12 @@ calendar {
 
 // === SLIDERS ===
 .metric scale trough highlight {
-  background-color: $highlight;
+  //background-color: $highlight;
+  background-image: linear-gradient(to right, $highlight, $highlight-2);
   border-radius: 50px;
 }
 .metric scale trough {
-  background-color: $grey;
+  background-color: $grey-other;
   border-radius: 50px;
   min-height: 5px;
   min-width: 50px;

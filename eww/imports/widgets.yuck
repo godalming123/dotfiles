@@ -29,7 +29,7 @@
 (defwidget updates-menu []
     (box :orientation "v" :valign "center" :halign "middle" :space-evenly false
       "You have ${updates} updates"
-      (button :class "btn-shape btn-color${updates == 0 ? "-inactive" : ""} btn-big" :halign "center" :onclick "eww close updates; alacritty -e paru --noconfirm -Syu; ~/.config/eww/scripts/updates.sh" "get updates")
+      (button :class "btn-shape btn-color${updates == 0 ? "-inactive" : ""} btn-big" :halign "center" :onclick "eww close updates; alacritty -e paru --noconfirm -Syu; sleep 1; ~/.config/eww/scripts/updates.sh" "get updates")
     )
 )
 
@@ -100,7 +100,7 @@
   )
 )
 
-; === wifi
+; === bluetooth
 (defwidget bluetooth []
   "Bluetooth"  
 )

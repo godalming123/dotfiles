@@ -19,6 +19,16 @@
 WM:                                             wayfire
 Wallpaper:                                      https://wallpapercave.com/w/wp3363794
 ")
+        (label :class "bold" :text "THEME DEMO")
+	(box :orientation "h" :space-evenly "false" :halign "center"
+          (cal)
+	  (box :orientation "v" :space-evenly "false"
+            (button :class "btn-shape btn-color" :onclick "notify-send -t 2000 Clicked 'You clicked my button'" "A button")
+            (button :class "btn-shape btn-color-inactive" :onclick "notify-send -t 2000 Clicked 'You clicked my inactive button. IMPOSSIBLE SURELY!'" "An inactive button")
+            (button :class "btn" :onclick "notify-send -t 2000 Clicked 'You clicked my bar button'" "A bar button button")
+            (metric :hexpand true :halign "fill" :value 50 :onchange "notify-send -t 500 'Value updated' 'you updated the value of the slider to {}%'" :label "slider")   
+          )
+	)
       )
     )
   )

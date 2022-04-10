@@ -3,7 +3,7 @@
 # INFO
 
 host="$(cat /etc/hostname)"
-os="Endevour OS"
+os="Endeavour OS"
 kernal="$(uname -sr)"
 uptime="$(uptime -p | sed 's/up //')"
 packadges="$(paru -Q | wc -l)"
@@ -40,6 +40,6 @@ function sysInfo {
 
 #sysInfo "@" "-" "" ":" "" "" "-"
 #sysInfo "@" "─" "" ":" "" "" "─"
-sysInfo "@" "─" "" "│" "" "" "─"
+#sysInfo "@" "─" "" "│" "" "" "─"
 #sysInfo "@" "+" "" "│" "" "" "─"
-#sysInfo "@" "╮" "╯" "│" "────────╯" "│" "─"
+sysInfo "@" "╮" "╯" "│" "────────╯" "│" "─"

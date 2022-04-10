@@ -4,8 +4,17 @@
 
 set ttyVar (tty)
 
-if test $ttyVar = /dev/tty1 # if we are running in tty
-    dbus-run-session wayfire # run wayfire
+set desktopTty /dev/tty2
+set terminalTty /dev/tty1
+
+if test $ttyVar = $desktopTty # if we are running in tty
+    tput bold
+    echo "LAUNCHING DE..."
+    dbus-run-session wayfire > ~/wayfire.log # run wayfire
+end
+
+if test $ttyVar = $terminalTty # if we are running in second tty
+	terminology # launch terminlolgy
 end
 
 # =====================
@@ -55,13 +64,15 @@ if status is-interactive
 
     # = other aliases =
     alias screens='kanshi' &
-    alias config='cd ~/Documents/coding\ repos/dotfiles/; micro fish/config.fish sys-info/ufetch-endevour.sh wayfire/wayfire.ini wayfire/wf-shell.ini alacritty/alacritty.yml wofi/styles.css wofi/wifi wofi/wofi-wifi.sh mako/config micro/bindings.json micro/settings.json' &
-    alias vcon='cd ~/Documents/coding\ repos/dotfiles/; vim -p ~/.vimrc fish/config.fish sys-info/ufetch-endevour.sh wayfire/wayfire.ini wayfire/wf-shell.ini alacritty/alacritty.yml wofi/styles.css wofi/wifi wofi/wofi-wifi.sh mako/config micro/bindings.json micro/settings.json eww/eww.yuck eww/eww.scss eww/imports/widgets.yuck eww/imports/bar-items.yuck' &
+    alias config='cd ~/Documents/coding\ repos/dotfiles/; micro fish/config.fish scripts/ufetch-endevour.sh wayfire/wayfire.ini wayfire/wf-shell.ini alacritty/alacritty.yml wofi/styles.css wofi/wifi wofi/wofi-wifi.sh mako/config micro/bindings.json micro/settings.json' &
+    alias vcon='cd ~/Documents/coding\ repos/dotfiles/; vim -p ~/.vimrc fish/config.fish scripts/ufetch-endevour.sh wayfire/wayfire.ini wayfire/wf-shell.ini alacritty/alacritty.yml wofi/styles.css wofi/wifi wofi/wofi-wifi.sh mako/config micro/bindings.json micro/settings.json eww/eww.yuck eww/eww.scss eww/imports/widgets.yuck eww/imports/bar-items.yuck' &
     alias pacman='sudo pacman' &
     alias wayfire='dbus-run-session wayfire' &
     alias concd='cd ~/Documents/coding\ repos/dotfiles/; cd $1' &
+    alias search='w3m duckduckgo.com'
     # alias fish_prompt='fish ' #this is supposed to reload fish with staring the greeting
     alias q='exit'
+    alias s='systemctl suspend'
 end
 
 # =====================
@@ -139,6 +150,18 @@ function indicator
     end
 end
 
+# === time ===
+function showTime
+    set theTime (date '+%H:%M')
+    echo -n " at $yellow$theTime"
+end
+
+# === date ===
+function showDate
+    set theDate (date '+%d/%m/%y')
+    echo -n " at $yellow$theDate"
+end
+
 # === main prompt ===
 function fish_prompt
     if test $status -eq 0
@@ -150,5 +173,7 @@ function fish_prompt
     workingDir
     git_info
     updates
+    showTime
+    showDate
     indicator "$success"
 end
