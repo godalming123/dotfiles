@@ -1,14 +1,14 @@
 #!/usr/bin/sh
 
-echo "=======STARTING DESKTOP INSTALLATION AND SETUP V1.8.0 ... ======"
+echo "======= STARTING DESKTOP INSTALLATION AND SETUP V1.8.0 ... ======"
 echo ""
 echo "STARTING DESKTOP INSTALLATION..."
 
 # pacman software
-sudo pacman -S  pipewire pipewire-alsa pipewire-jack pipewire-pulse arc-gtk-theme xorg-xwayland fish wofi light
+sudo pacman -S --noconfirm pipewire pipewire-alsa pipewire-jack pipewire-pulse arc-gtk-theme xorg-xwayland fish wofi light
 
 # paru software
-paru -S wayfire eww-wayland-git
+paru -S --noconfirm --needed wayfire eww-wayland-git
 
 # add user to video group  so he/she can change the brightness
 sudo usermod -aG video $USER

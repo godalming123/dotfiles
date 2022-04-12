@@ -4,7 +4,7 @@ echo "========== STARTING SOFTWARE SOURCES CONFIGURATION V1.0... =========="
 echo ""
 echo "INSTALLING FLATPAK SOFTWARE SOURCE..."
 #flatpack
-sudo pacman -S flatpak
+sudo pacman -S --noconfirm flatpak
 echo "...FINISHED INSTALLING FLATPAK SOFTWARE SOURCE"
 echo ""
 echo "INSTALLING PARU AUR HELPER..."
