@@ -1,5 +1,10 @@
 #!/usr/bin/sh
 
+SCRIPT=$(readlink -f "$0")
+# Absolute path this script is in, thus /home/user/bin
+SCRIPT_PATH=$(dirname "$SCRIPT")
+DOTFILES_PATH="$SCRIPT_PATH.."
+
 echo "================================================================"
 echo "===================== STARTING UPGRADES... ====================="
 echo "================================================================"
@@ -18,15 +23,15 @@ function exec_ {
     echo ""
 }
 
-exec_ ./software/software-sources.sh
+exec_ "$DOTFILES_PATH/software/software-sources.sh"
 
-exec_ ./git-config.sh
+exec_ "$DOTFILES_PATH/git-config.sh"
 
-exec_ ./software/software-basic.sh
+exec_ "$DOTFILES_PATH/software/software-basic.sh"
 
-exec_ ./desktop-setup.sh
+exec_ "$DOTFILES_PATH/desktop-setup.sh"
 
-exec_ ./software/software-extra.sh
+exec_ "$DOTFILES_PATH/software/software-extra.sh"
 
 echo ""
 echo "================================================================"
