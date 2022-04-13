@@ -25,15 +25,15 @@ function exec_ {
     echo ""
 }
 
-exec_ "$DOTFILES_PATH/software/software-sources.sh"
+exec_ "$SCRIPT_PATH/software/software-sources.sh"
 
-exec_ "$DOTFILES_PATH/git-config.sh"
+exec_ "$SCRIPT_PATH/git-config.sh"
 
-exec_ "$DOTFILES_PATH/software/software-basic.sh"
+exec_ "$SCRIPT_PATH/software/software-basic.sh"
 
-exec_ "$DOTFILES_PATH/desktop-setup.sh"
+exec_ "$SCRIPT_PATH/desktop-setup.sh"
 
-exec_ "$DOTFILES_PATH/software/software-extra.sh"
+exec_ "$SCRIPT_PATH/software/software-extra.sh"
 
 echo ""
 echo "================================================================"
