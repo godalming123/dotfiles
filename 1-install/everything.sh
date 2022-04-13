@@ -19,9 +19,11 @@ echo "====================================================================="
 echo "==== STARTING INSTALLATION AND CONFIIGURATION OF SYSTEM V1.0... ====="
 echo "====================================================================="
 
+mkdir "$SCRIPT_PATH/logs/"
+
 function exec_ {
     chmod a+x $1
-    $1
+    $1|& tee "$SCRIPT_PATH/logs/$1.log"
     echo ""
 }
 
