@@ -65,7 +65,7 @@ ln -s      $DOTFILES_PATH/alacritty/                 ~/.config/
 ln -s      $DOTFILES_PATH/wayfire/wayfire.ini        ~/.config/
 ln -s      $DOTFILES_PATH/wayfire/wf-shell.ini       ~/.config/
 
-ln -s $DOTFILES_PATH/micro/                          ~/.config/
+ln -s      $DOTFILES_PATH/micro/                     ~/.config/
 
 sudo ln -s $DOTFILES_PATH/scripts/ufetch-endevour.sh /bin/
 chmod a+x  $DOTFILES_PATH/scripts/ufetch-endevour.sh
