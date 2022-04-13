@@ -1,9 +1,11 @@
 #!/usr/bin/sh
 
+# Absolute path for script EG: /home/user/dotfiles/1-install/everything.sh
 SCRIPT=$(readlink -f "$0")
-# Absolute path this script is in, thus /home/user/bin
+# Absolute path for script parent folder EG: /home/user/dotfiles/1-install
 SCRIPT_PATH=$(dirname "$SCRIPT")
-DOTFILES_PATH="$SCRIPT_PATH.."
+# Absolute path for dotfiles folder EG: /home/user/dotfiles
+DOTFILES_PATH="$(dirname "$SCRIPT_PATH")"
 
 echo "================================================================"
 echo "===================== STARTING UPGRADES... ====================="
