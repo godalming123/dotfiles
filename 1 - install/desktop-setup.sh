@@ -10,7 +10,7 @@ echo ""
 echo "STARTING DESKTOP INSTALLATION..."
 
 # pacman software
-sudo pacman -S --noconfirm pipewire pipewire-alsa pipewire-jack pipewire-pulse arc-gtk-theme xorg-xwayland fish wofi light
+sudo pacman -S pipewire pipewire-alsa pipewire-jack pipewire-pulse arc-gtk-theme xorg-xwayland fish wofi light # we cant use noconfirm for this as there is a dependency issue meaning that the default selections cancel the installation
 
 # paru software
 paru -S --noconfirm --needed wayfire eww-wayland-git
