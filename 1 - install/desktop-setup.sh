@@ -1,5 +1,10 @@
 #!/usr/bin/sh
 
+SCRIPT=$(readlink -f "$0")
+# Absolute path this script is in, thus /home/user/bin
+SCRIPT_PATH=$(dirname "$SCRIPT")
+DOTFILES_PATH="$SCRIPT_PATH.."
+
 echo "======= STARTING DESKTOP INSTALLATION AND SETUP V1.8.0 ... ======"
 echo ""
 echo "STARTING DESKTOP INSTALLATION..."
@@ -49,21 +54,21 @@ chsh -s /bin/fish $USER
 mkdir ~/.config/
 
 # add config files
-ln -s      ~/Documents/coding\ repos/dotfiles/eww/                 ~/.config/
+ln -s      $DOTFILES_PATH/eww/                       ~/.config/
 
-ln -s      ~/Documents/coding\ repos/dotfiles/mako/                      ~/.config/
+ln -s      $DOTFILES_PATH/mako/                      ~/.config/
 
-ln -s      ~/Documents/coding\ repos/dotfiles/fish/                       ~/.config/
+ln -s      $DOTFILES_PATH/fish/                      ~/.config/
 
-ln -s      ~/Documents/coding\ repos/dotfiles/alacritty/                  ~/.config/
+ln -s      $DOTFILES_PATH/alacritty/                 ~/.config/
 
-ln -s      ~/Documents/coding\ repos/dotfiles/wayfire/wayfire.ini         ~/.config/
-ln -s      ~/Documents/coding\ repos/dotfiles/wayfire/wf-shell.ini        ~/.config/
+ln -s      $DOTFILES_PATH/wayfire/wayfire.ini        ~/.config/
+ln -s      $DOTFILES_PATH/wayfire/wf-shell.ini       ~/.config/
 
-sudo ln -s ~/Documents/coding\ repos/dotfiles/micro/                      ~/.config/
+ln -s $DOTFILES_PATH/micro/                          ~/.config/
 
-sudo ln -s ~/Documents/coding\ repos/dotfiles/scripts/ufetch-endevour.sh /bin/
-chmod a+x  ~/Documents/coding\ repos/dotfiles/scripts/ufetch-endevour.sh
+sudo ln -s $DOTFILES_PATH/scripts/ufetch-endevour.sh /bin/
+chmod a+x  $DOTFILES_PATH/scripts/ufetch-endevour.sh
 
 echo "...FINISHED DESKTOP SETUP"
 echo ""
