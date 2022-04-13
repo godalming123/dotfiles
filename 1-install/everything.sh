@@ -23,7 +23,8 @@ mkdir "$SCRIPT_PATH/logs/"
 
 function exec_ {
     chmod a+x $1
-    $1|& tee "$SCRIPT_PATH/logs/$1.log"
+    script_name="$(basename $1)"
+    $1|& tee "$SCRIPT_PATH/logs/$script_name.log"
     echo ""
 }
 
