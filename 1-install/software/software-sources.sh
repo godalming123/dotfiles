@@ -12,7 +12,7 @@ git clone https://aur.archlinux.org/paru.git
 cd paru
 makepkg -si --noconfirm
 cd ../
-rm -r paru/
+rm -r -f paru/
 echo "... FINISHED INSTALLING PARU AUR HELPER"
 echo ""
 
