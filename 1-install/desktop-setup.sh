@@ -15,7 +15,7 @@ echo "STARTING DESKTOP INSTALLATION..."
 sudo pacman -S pipewire pipewire-alsa pipewire-jack pipewire-pulse arc-gtk-theme xorg-xwayland fish wofi light # we cant use noconfirm for this as there is a dependency issue meaning that the default selections cancel the installation
 
 # paru software
-paru -S --noconfirm --needed wayfire eww-wayland-git
+paru -S --noconfirm --needed wayfire-git eww-wayland-git
 
 # add user to video group  so he/she can change the brightness
 sudo usermod -aG video $USER
