@@ -10,7 +10,7 @@ echo ""
 echo "INSTALLING PARU AUR HELPER..."
 git clone https://aur.archlinux.org/paru.git
 cd paru
-makepkg -si
+makepkg -si --noconfirm
 cd ../
 rm -r paru/
 echo "... FINISHED INSTALLING PARU AUR HELPER"
