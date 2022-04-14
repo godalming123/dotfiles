@@ -155,13 +155,13 @@ end
 # === time ===
 function showTime
     set theTime (date '+%H:%M')
-    echo -n " at $yellow$theTime"
+    echo -n " at $yellow$theTime$reset"
 end
 
 # === date ===
 function showDate
     set theDate (date '+%d/%m/%y')
-    echo -n " at $yellow$theDate"
+    echo -n " at $yellow$theDate$reset"
 end
 
 # === main prompt ===
