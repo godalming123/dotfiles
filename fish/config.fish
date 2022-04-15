@@ -72,6 +72,7 @@ if status is-interactive
     alias wayfire='dbus-run-session wayfire' &
     alias concd='cd ~/Documents/coding\ repos/dotfiles/; cd $1' &
     alias search='w3m duckduckgo.com'
+    alias tor="/home/whatever/Downloads/tor/start-tor-browser &"
     # alias fish_prompt='fish ' #this is supposed to reload fish with staring the greeting
     alias q='exit'
     alias s='systemctl suspend'
@@ -141,15 +142,20 @@ end
 function workingDir
     echo -n "in $blue"
     echo -n (pwd)
+    echo -n "$reset"
 end
 
 # === prompt indicator ===
 function indicator
     if test "$argv" = true
-        echo -n "$green > "
+        echo -n "$green > $reset"
     else
-        echo -n "$red > "
+        echo -n "$red > $reset"
     end
+end
+
+function rightIndicator
+	echo -n "$magenta<$reset"
 end
 
 # === time ===
@@ -164,6 +170,14 @@ function showDate
     echo -n " at $yellow$theDate$reset"
 end
 
+# === command duration
+function commandDuration
+	set duration (math $CMD_DURATION/1000)
+	if test $duration -gt 0.1
+		echo -n " took $magenta$duration$reset"
+	end
+end
+
 # === main prompt ===
 function fish_prompt
     if test $status -eq 0
@@ -174,8 +188,13 @@ function fish_prompt
 
     workingDir
     git_info
-    updates
-    showTime
-    showDate
+    commandDuration
     indicator "$success"
+end
+
+function fish_right_prompt
+	rightIndicator
+	updates
+	showTime
+	showDate
 end
