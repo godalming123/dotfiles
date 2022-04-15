@@ -155,7 +155,7 @@ function indicator
 end
 
 function rightIndicator
-	echo -n "$magenta<$reset"
+	echo -n " $magenta<$reset"
 end
 
 # === time ===
@@ -170,7 +170,7 @@ function showDate
     echo -n " at $yellow$theDate$reset"
 end
 
-# === command duration
+# === command duration ===
 function commandDuration
 	set duration (math $CMD_DURATION/1000)
 	if test $duration -gt 0.1
