@@ -95,7 +95,7 @@ end
 # === updates ===
 function updates
     set updates (cat ~/.config/eww/scripts/updates.txt)
-    if test "$updates" != 0; or test "$updates" != ""
+    if test $updates -ne 0;
         echo -n "$reset with $red$updates$reset updates"
     end
 end
