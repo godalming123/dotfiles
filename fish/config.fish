@@ -4,8 +4,8 @@
 
 set ttyVar (tty)
 
-set desktopTty /dev/tty2
-set terminalTty /dev/tty1
+set desktopTty /dev/tty1
+set terminalTty /dev/tty2
 
 if test $ttyVar = $desktopTty # if we are running in tty
     tput bold
@@ -49,6 +49,7 @@ if status is-interactive
 
     # = app aliases =
     alias teams='flatpak run com.microsoft.Teams &'
+    alias tor="/home/whatever/Downloads/tor/start-tor-browser &"
     alias vscodium='flatpak run com.vscodium.codium &'
 
     # = git aliases =
@@ -72,7 +73,8 @@ if status is-interactive
     alias wayfire='dbus-run-session wayfire' &
     alias concd='cd ~/Documents/coding\ repos/dotfiles/; cd $1' &
     alias search='w3m duckduckgo.com'
-    alias tor="/home/whatever/Downloads/tor/start-tor-browser &"
+    alias flutter="~/Documents/flutter/bin/flutter"
+    
     # alias fish_prompt='fish ' #this is supposed to reload fish with staring the greeting
     alias q='exit'
     alias s='systemctl suspend'
