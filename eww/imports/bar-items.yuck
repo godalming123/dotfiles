@@ -43,7 +43,7 @@
   (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end"
     ; volume
     (imic :tooltip "Volume: ${volume}%"
-          :icon "./icons/dark/audio.png"
+          :icon "./icons/dark/volume.svg"
           :value volume
           :onchange "~/.config/eww/scripts/volume.sh set {}")
     ; brightness

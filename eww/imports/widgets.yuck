@@ -42,10 +42,10 @@
           (button :valign "start" :class "btn" :onclick "eww close menu; notify-send software 'opens software'"                       (image :path "./icons/dark/software.png" :image-height 23))
         )
         (box :orientation "v" :space-evenly false
-          (button :valign "start" :class "btn" :onclick "eww close menu; nautilus ~/Documents &"                                    (image :path "./icons/dark/docs.png" :image-height 23))
-          (button :valign "start" :class "btn" :onclick "eww close menu; nautilus ~/Downloads &"                                    (image :path "./icons/dark/downloads.png" :image-height 23))
+          (button :valign "start" :class "btn" :onclick "eww close menu; nautilus ~/Documents &"                                    (image :path "./icons/dark/file.svg" :image-height 23))
+          (button :valign "start" :class "btn" :onclick "eww close menu; nautilus ~/Downloads &"                                    (image :path "./icons/dark/downloads.svg" :image-height 23))
           (button :valign "start" :class "btn" :onclick "eww close menu; nautilus ~/Pictures &"                                     (image :path "./icons/dark/photos.svg" :image-height 23))
-          (button :valign "start" :class "btn" :onclick "eww close menu; nautilus ~/Music &"                                        (image :path "./icons/dark/music.png" :image-height 23))
+          (button :valign "start" :class "btn" :onclick "eww close menu; nautilus ~/Music &"                                        (image :path "./icons/dark/music.svg" :image-height 23))
           (button :valign "start" :class "btn" :onclick "eww close menu; nautilus ~/Videos &"                                       (image :path "./icons/dark/recorder.png" :image-height 23))
           (button :valign "start" :class "btn" :onclick "eww close menu; nautilus ~/Desktop &"                                      (image :path "./icons/dark/desktop.png" :image-height 23))
         )
