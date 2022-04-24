@@ -72,8 +72,9 @@ if status is-interactive
     alias pacman='sudo pacman' &
     alias wayfire='dbus-run-session wayfire' &
     alias concd='cd ~/Documents/coding\ repos/dotfiles/; cd $1' &
-    alias search='w3m duckduckgo.com'
-    alias flutter="~/Documents/flutter/bin/flutter"
+    alias search='w3m duckduckgo.com' &
+    alias flutter="~/Documents/flutter/bin/flutter" &
+    alias man="/bin/man" &#when fish is ran as an appimage the included man command does not work this fixes that
     
     # alias fish_prompt='fish ' #this is supposed to reload fish with staring the greeting
     alias q='exit'

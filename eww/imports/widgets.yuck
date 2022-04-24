@@ -44,7 +44,7 @@
         (box :orientation "v" :space-evenly false
           (button :valign "start" :class "btn" :onclick "eww close menu; nautilus ~/Documents &"                                    (image :path "./icons/dark/docs.png" :image-height 23))
           (button :valign "start" :class "btn" :onclick "eww close menu; nautilus ~/Downloads &"                                    (image :path "./icons/dark/downloads.png" :image-height 23))
-          (button :valign "start" :class "btn" :onclick "eww close menu; nautilus ~/Pictures &"                                     (image :path "./icons/dark/landscape.png" :image-height 23))
+          (button :valign "start" :class "btn" :onclick "eww close menu; nautilus ~/Pictures &"                                     (image :path "./icons/dark/photos.svg" :image-height 23))
           (button :valign "start" :class "btn" :onclick "eww close menu; nautilus ~/Music &"                                        (image :path "./icons/dark/music.png" :image-height 23))
           (button :valign "start" :class "btn" :onclick "eww close menu; nautilus ~/Videos &"                                       (image :path "./icons/dark/recorder.png" :image-height 23))
           (button :valign "start" :class "btn" :onclick "eww close menu; nautilus ~/Desktop &"                                      (image :path "./icons/dark/desktop.png" :image-height 23))
@@ -85,12 +85,12 @@
            :value value
            :onchange onchange)))
 
-; === notificutaions
+; === notificutaions ===
 (defwidget notifucations []
   "notifucations"  
 )
 
-; === wifi
+; === wifi ===
 (defwidget wifi []
   (box :orientation "v" :valign "fill" :halign "fill" :space-evenly false
     (button :class "btn list-item" :halign "fill" :onclick "~/.config/eww/scripts/wifi.sh TOGGLE"
@@ -100,7 +100,7 @@
   )
 )
 
-; === bluetooth
+; === bluetooth ===
 (defwidget bluetooth []
   "Bluetooth"  
 )
