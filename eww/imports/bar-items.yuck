@@ -22,7 +22,7 @@
           :onchange "")
     ; cpu
     (imic :tooltip "CPU: ${EWW_CPU.avg}%"
-          :icon "./icons/dark/cpu.png"
+          :icon "./icons/dark/cpu.svg"
           :value {EWW_CPU.avg}
           :onchange "")
     ; disk
@@ -63,7 +63,7 @@
     ;${updates == 0 ? "" : ""}
     (button :tooltip "You have ${updates} updates" :class "btn" :onclick "eww close bluetooth wifi sys-info menu notifucations calendar; eww open --toggle updates"
       (box :orientation "h" :space-evenly false
-        (image :path "./icons/dark/downloads.png" :image-height 14)
+        (image :path "./icons/dark/downloads.svg" :image-height 14)
         updates
       )
     )
