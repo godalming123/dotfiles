@@ -214,20 +214,10 @@ function commandDuration
 
 	    # = PRINT TIME IN SECONDS MINUTES DAYS HOURS AND WEEKS =
 		echo -n " took$magenta"
-
-		if test $seconds -gt 0
-		    echo -n " $seconds"
-		    echo -n "s"
-		end
 		
-		if test $minutes -gt 0
-            echo -n " $minutes"
-            echo -n "m"
-		end
-
-        if test $hours -gt 0
-            echo -n " $hours"
-            echo -n "h"
+        if test $weeks -gt 0
+            echo -n " $weeks"
+            echo -n "w"
         end
 
         if test $days -gt 0
@@ -235,10 +225,20 @@ function commandDuration
             echo -n "d"
         end
 
-        if test $weeks -gt 0
-            echo -n " $weeks"
-            echo -n "w"
+        if test $hours -gt 0
+            echo -n " $hours"
+            echo -n "h"
         end
+
+		if test $minutes -gt 0
+            echo -n " $minutes"
+            echo -n "m"
+		end
+		
+		if test $seconds -gt 0
+		    echo -n " $seconds"
+		    echo -n "s"
+		end
 		
 		echo -n "$reset"
 	end
