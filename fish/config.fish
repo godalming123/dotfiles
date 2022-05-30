@@ -54,6 +54,8 @@ if status is-interactive
     alias ls='ls --color=auto' &
     alias ll='ls -lav --ignore=..' & # show a long listing of all files/folders except ".."
     alias l='ls -lav -ignore=.?*' & # show a long listing but no hidden files except "."
+	alias ..='cd ../' &
+	alias ...='cd ../../' &
 
     # = app aliases =
     alias teams='flatpak run com.microsoft.Teams &'
@@ -71,7 +73,8 @@ if status is-interactive
     alias giff='git diff' &
     alias gog='git log' &
     alias gull='git pull' &
-    alias gonfig='git config'
+    alias gonfig='git config' &
+	alias ginit='git init' &
 
     # = other aliases =
     alias screens='kanshi' &
