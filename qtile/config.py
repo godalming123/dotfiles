@@ -28,7 +28,9 @@ from libqtile import bar, layout, widget, qtile
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.backend.wayland import InputConfig
-#import os
+import os
+
+qtile.cmd_spawn("picom --experimental-backends &")
 
 mod = "mod4"
 terminal = "alacritty"
@@ -41,7 +43,6 @@ keys = [
     Key([mod], "d", lazy.layout.right(), desc="Move focus to right"),
     Key([mod], "s", lazy.layout.down(), desc="Move focus down"),
     Key([mod], "w", lazy.layout.up(), desc="Move focus up"),
-    Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window"),
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
     Key([mod, "shift"], "a", lazy.layout.shuffle_left(), desc="Move window to the left"),
@@ -69,10 +70,13 @@ keys = [
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
-    Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
-    Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
+    Key([mod], "c", lazy.reload_config(), desc="Reload the config"),
+    Key([mod, "shift"], "e", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
-    #Key([mod], "", lazy.spawncmd('wofi -l 7 -L 15 -x 10 -y -90 -W 300 --show drun --style ~/.config/wofi/styles.css'), desc="Spawn a command using a prompt widget"),
+    Key([mod], "x", lazy.spawn("i3lock -c 000000", "systemctl suspend"), desc="Lock the system"),
+    # audio and brightness keys
+    #Key(["XF86AudioRaiseVolume"], "", lazy.spawncmd(), desc="Raise volume")
+    Key([], "Alt_L", lazy.spawn("rofi -show combi"), desc="open menu"),
 ]
 
 groups = [Group(i) for i in "1234567890"]
@@ -101,14 +105,14 @@ for i in groups:
         ]
     )
 layouts = [
-    layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
-    # layout.Max(),
-    # layout.Stack(num_stacks=2),
-    # layout.Bsp(),
+    layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=2),
+    layout.Max(),
+    #layout.Stack(num_stacks=2),
+    layout.Bsp(fair=False),
     # layout.Matrix(),
-    # layout.MonadTall(),
+    layout.MonadTall(),
     # layout.MonadWide(),
-    # layout.RatioTile(),
+    layout.RatioTile(),
     # layout.Tile(),
     # layout.TreeTab(),
     # layout.VerticalTile(),
@@ -149,6 +153,12 @@ screens = [
                 ),
                 #widget.Systray() if qtile.core.name == "X11" else None,
                 widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
+                widget.CheckUpdates(
+                    update_interval = 1800,
+                    distro = "Arch_checkupdates",
+                    display_format = "{updates} Updates",
+                    mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(terminal + " -e paru")},
+                ),
                 widget.QuickExit(),
             ],
             24,

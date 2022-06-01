@@ -22,6 +22,23 @@
   )
 )
 
+
+(defwindow sidebar
+  :monitor 0
+  :windowtype "dock"
+  :geometry (geometry :height "100%"
+                      :widget "30px"
+                      :anchor "center right")
+  :exclusive true
+  ;:stacking barStacking ; doesnt work
+  :stacking "fg"
+  (centerbox :orientation "v" :class "bar"
+    (leftSidebarStuff)
+    (centerSidebarStuff)
+    (rightSidebarStuff)
+  )
+)
+
 ; === define background information windows ===
 
 (defwindow time
@@ -126,14 +143,9 @@
 
 (defwindow background
   :monitor 0
-  ; for normal wallpaper
-  ;:geometry (geometry :width "100%"
-  ;                    :height "100%"
-  ;                    :anchor "center")
-  ; for wallpaper in top right
-  :geometry (geometry :width "700px"
+  :geometry (geometry :width "100%"
                       :height "100%"
-                      :anchor "top right")
+                      :anchor "center")
   :stacking "bg"
 (box :class "background-image" :valign "fill" :halign "fill"))
 

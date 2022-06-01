@@ -8,10 +8,11 @@ set desktopTty /dev/tty1
 set terminalTty /dev/tty2
 
 if test $ttyVar = $desktopTty # if we are running in tty
-    tput bold
-    echo "LAUNCHING DE..."
-	set MOZ_ENABLE_WAYLAND 1# doesnt work
-    dbus-run-session wayfire > ~/wayfire.log # run wayfire
+	#tput bold
+	#echo "LAUNCHING DE..."
+	#set MOZ_ENABLE_WAYLAND 1# doesnt work
+	#dbus-run-session wayfire > ~/wayfire.log # run wayfire
+	Hyprland
 end
 
 if test $ttyVar = $terminalTty # if we are running in second tty

@@ -10,20 +10,32 @@
 //$highlight-2: #96ddc5;
 
 // === gradient color scheme ===
+// $fg: #b0b4bc;                      // the color for all text
+// $bg: rgba(38, 38, 38, 1);          // the color of the bar *opacity currently doesnt work as there is a bug*
+// $grey-alt: rgba(65, 65, 65, 1);    // the color for buttons in the bar on hover
+// $grey: rgba(70, 70, 70, 1);        // the color for all windows
+// $grey-other: rgba(60, 60, 60, 1);  // bacground for sliders
+// $inactive: rgba(46, 46, 46, 1);    // the color for inactive buttons
+// $highlight: #bf2e3d;               // used in sliders begining
+// $highlight-2: #cf7c41;
+// $highlight-alt: #bf2e3d;           //used in active buttons
+// $highlight-2-alt: #cf7c41;
+// $highlight-alt-darken: #992430;    // used in hovered buttons
+// $highlight-2-alt-darken: #a85c34;
+
+// === magical color scheme ===
 $fg: #b0b4bc;                      // the color for all text
-
-$bg: rgba(38, 38, 38, 1);          // the color of the bar *opacity currently doesnt work as there is a bug*
-$grey-alt: rgba(65, 65, 65, 1);    // the color for buttons in the bar on hover
-$grey: rgba(70, 70, 70, 1);        // the color for all windows
-$grey-other: rgba(60, 60, 60, 1);  // bacground for sliders
-$inactive: rgba(46, 46, 46, 1);    // the color for inactive buttons
-
-$highlight: #bf2e3d;               // used in sliders begining
-$highlight-2: #cf7c41;
-$highlight-alt: #bf2e3d;           //used in active buttons
-$highlight-2-alt: #cf7c41;
-$highlight-alt-darken: #992430;    // used in hovered buttons
-$highlight-2-alt-darken: #a85c34;
+$bg: rgba(42, 52, 63, 0);          // the color of the bar
+$grey-alt: rgba(256, 256, 256, 0.1);    // the color for buttons in the bar on hover
+$grey: rgba(58, 71, 86, 0.9);        // the color for all windows
+$grey-other: rgba(49, 61, 73, 0.7);  // bacground for sliders
+$inactive: rgba(37, 46, 56, 1);    // the color for inactive buttons
+$highlight: rgba(232,167,64,1);               // used in sliders begining
+$highlight-2: rgba(199,105,53,1);
+$highlight-alt: darken($highlight, 5%);           //used in active buttons
+$highlight-2-alt: darken($highlight-2, 5%);
+$highlight-alt-darken: darken($highlight-alt, 10%);    // used in hovered buttons
+$highlight-2-alt-darken: darken($highlight-2-alt, 10%);
 
 // === grey colors ===
 // $bg: #383838;
@@ -75,7 +87,11 @@ $highlight-2-alt-darken: #a85c34;
   transition: 300ms;
 }
 
-window:not(bar), tooltip {
+window {
+	background-color: rgba(0,0,0,0.01);
+}
+
+window > *:not(.bar), tooltip {
 	  background-color: $grey;
 	  padding: 10px;
 	  border-radius: 10px;
@@ -96,7 +112,7 @@ window:not(bar), tooltip {
 // === BACKGROUND IMAGE ===
 
 .background-image {
-  background-image: url("./wallpapers/abstract-gradient.jpg");
+  background-image: url("./wallpapers/magical.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
