@@ -105,6 +105,24 @@
           :value volume
           :onchange "~/.config/eww/scripts/volume.sh set {}")
     ; brightness
+(eventbox :onhover "eww update bright=true"   
+  			:onhoverlost "eww update bright=false"
+  			(box    :orientation "v"  
+			  		:space-evenly "false"  
+					:spacing 2
+  			(revealer :transition "slideup" 
+			  		  :reveal bright   
+					  :duration "550ms"
+  			(scale
+			  	   :value brightness 
+				   :tooltip "Brightness: ${brightness}%" 
+				   :onchange "~/.config/eww/scripts/brightness.sh set {}" 
+				   :orientation "v" 
+				   :flipped true 
+				   :max 101 
+				   :min 0))
+  			(label :class "brightness-icon" 
+			  	   :text "brigh")))
     (imicRev :tooltip "Brightness: ${brightness}%"
           :icon "./icons/dark/brightness.png"
           :value brightness

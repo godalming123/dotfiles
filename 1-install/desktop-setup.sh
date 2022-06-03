@@ -12,10 +12,13 @@ echo ""
 echo "STARTING DESKTOP INSTALLATION..."
 
 # pacman software
-sudo pacman -S --needed pipewire-alsa pipewire-jack pipewire-pulse pipewire arc-gtk-theme xorg-xwayland fish wofi light # we cant use noconfirm for this as there is a dependency issue meaning that the default selections cancel the installation
+sudo pacman -S --needed pipewire-alsa pipewire-jack pipewire-pulse pipewire arc-gtk-theme xorg-xwayland fish wofi light python-pip mako # we cant use noconfirm for this as there is a dependency issue meaning that the default selections cancel the installation
 
 # paru software
 paru -S --noconfirm --needed wayfire eww-wayland-git
+
+# pip software
+pip install wal
 
 # add user to video group  so he/she can change the brightness
 sudo usermod -aG video $USER
@@ -58,7 +61,9 @@ mkdir ~/.config/
 # add config files
 ln -s      "$DOTFILES_PATH/eww/"                       ~/.config/
 
-ln -s      "$DOTFILES_PATH/mako/"                      ~/.config/
+ln -s      "$DOTFILES_PATH/wal/"                       ~/.config/
+
+ln -s      "$DOTFILES_PATH/btop/"                       ~/.config/
 
 ln -s      "$DOTFILES_PATH/fish/"                      ~/.config/
 

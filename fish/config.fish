@@ -98,6 +98,8 @@ end
 # =====================
 
 function fish_greeting
+	export PATH="$PATH:$HOME/.local/bin/" &
+	cat ~/.cache/wal/sequences & #set colorscheme from wal
     clear
     /bin/ufetch-endevour.sh
     tput sgr0 # reset the font weght + color

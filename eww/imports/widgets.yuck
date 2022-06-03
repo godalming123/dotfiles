@@ -73,30 +73,18 @@
   )
 )
 
-(defwidget imicRev [tooltip icon value onchange revealVar orientation onclick]
-  (revOnHover
-	:icon (image :path icon :image-height 18)
-    :content (metric :value value :onchange onchange :label "")
-	:revealVar "${revealVar}"
-	:onclick "${onclick}"
-	:orientation "${orientation}"
-  )
-)
-
-; === revel on hover widget ===
-
-(defwidget revOnHover [icon content revealVar onclick orientation]
+(defwidget imicRev [tooltip icon value onchange revealVar onclick orientation]
 	(eventbox
 		:onhover "eww update ${revealVar}=true"
 		:onhoverlost "eww update ${revealVar}=false"
 		:onclick "${onclick}"
 		(box :orientation "${orientation}" :vexpand "false" :hexpand "false" :spcae-evenly "false"
-			icon
+			(image :path icon :image-height 18)
 			(revealer
-				:transition "slideright"
-				:reveal "${revealVar}"
+				:transition "slidedown"
+				:reveal revealVar
 				:duration "350ms"
-				content
+				(metric :value value :onchange onchange :label "" :orientation "v")
 			)
 		)
 	)

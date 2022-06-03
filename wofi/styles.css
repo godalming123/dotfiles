@@ -1,7 +1,4 @@
-/*
-scheme: "Nord"
-author: "arcticicestudio"
-*/
+@import "~/.cache/wal/colors.scss";
 
 @define-color base10 #2E3440;
 @define-color base00 #3B4252;
@@ -40,7 +37,7 @@ author: "arcticicestudio"
 
  
 #text:selected {
-  color: @base04;
+  color: @color1;
 }
  
 #window {
@@ -52,15 +49,15 @@ author: "arcticicestudio"
 
 #input {
   border: none;
-  background-color: @base10;
+  background-color: @color2;
   border-radius: 8px;
   margin: 4px 4px 8px 4px;
   padding: 8px;
-  color: @base04;
+  color: @color1;
 }
 
 #inner-box {
-  color: @base04;
+  color: @color1;
 }
 
 #outer-box {
@@ -71,7 +68,7 @@ author: "arcticicestudio"
 }
 
 #text {
-  color: @base04;
+  color: @color1;
   background-color: transparent;
 } 
 
